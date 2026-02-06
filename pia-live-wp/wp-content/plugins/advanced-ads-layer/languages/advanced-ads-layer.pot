@@ -1,0 +1,305 @@
+# Copyright (C) 2025 Advanced Ads
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Ads – PopUp and Layer Ads 2.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/advanced-ads-layer\n"
+"Last-Translator: Shakeeb Ahmed <me@shakeebahmed.com>\n"
+"Language-Team: Advanced Ads <support@wpadvancedads.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-06-23T15:23:07+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: advanced-ads-layer\n"
+
+#. Plugin Name of the plugin
+#: layer-ads.php
+#: includes/class-bootstrap.php:71
+#: includes/class-bootstrap.php:78
+msgid "Advanced Ads – PopUp and Layer Ads"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: layer-ads.php
+msgid "https://wpadvancedads.com/add-ons/popup-and-layer-ads/"
+msgstr ""
+
+#. Description of the plugin
+#: layer-ads.php
+msgid "Create PopUp, Layer ads and Overlays"
+msgstr ""
+
+#. Author of the plugin
+#: layer-ads.php
+msgid "Advanced Ads"
+msgstr ""
+
+#. Author URI of the plugin
+#: layer-ads.php
+msgid "https://wpadvancedads.com"
+msgstr ""
+
+#: admin/admin.php:76
+msgid "You shouldn’t have more than one Fancybox on the same page. Please, make sure that you set up the ads for the different layers with display conditions to prevent them from showing up on the same page"
+msgstr ""
+
+#: admin/admin.php:148
+msgid "Use Fancybox plugin"
+msgstr ""
+
+#: admin/admin.php:226
+msgid "show the ad"
+msgstr ""
+
+#: admin/admin.php:239
+msgid "effect"
+msgstr ""
+
+#: admin/admin.php:252
+msgid "background"
+msgstr ""
+
+#: admin/admin.php:262
+msgid "auto close"
+msgstr ""
+
+#: admin/admin.php:272
+msgid "close button"
+msgstr ""
+
+#: admin/admin.php:282
+#: admin/views/close-button.php:18
+msgid "Position"
+msgstr ""
+
+#: admin/admin.php:295
+msgid "size"
+msgstr ""
+
+#: admin/admin.php:319
+msgid "It is against the AdSense policy to use their ads in popups."
+msgstr ""
+
+#. translators: %s: number of seconds
+#: admin/views/auto_close.php:10
+msgid "close after %s seconds"
+msgstr ""
+
+#: admin/views/background.php:3
+msgid "Put a half-transparent overlay over the background of the page if this ad is displayed."
+msgstr ""
+
+#: admin/views/background.php:6
+msgid "close all ads with click on the background"
+msgstr ""
+
+#: admin/views/close-button.php:14
+msgid "add close button"
+msgstr ""
+
+#: admin/views/close-button.php:19
+msgid "outside"
+msgstr ""
+
+#: admin/views/close-button.php:20
+msgid "inside"
+msgstr ""
+
+#: admin/views/close-button.php:22
+msgid "left"
+msgstr ""
+
+#: admin/views/close-button.php:23
+msgid "right"
+msgstr ""
+
+#: admin/views/close-button.php:28
+msgid "enable timeout"
+msgstr ""
+
+#: admin/views/close-button.php:30
+msgid "close the ad for …"
+msgstr ""
+
+#: admin/views/close-button.php:32
+msgid "days, 0 = after current session"
+msgstr ""
+
+#: admin/views/effects.php:1
+msgid "Show"
+msgstr ""
+
+#: admin/views/effects.php:2
+msgid "Fade in"
+msgstr ""
+
+#: admin/views/effects.php:3
+msgid "Slide"
+msgstr ""
+
+#: admin/views/effects.php:4
+msgid "Type of effect when the ad is being displayed"
+msgstr ""
+
+#: admin/views/effects.php:7
+msgid "Duration of the effect (in milliseconds)."
+msgstr ""
+
+#: admin/views/position.php:24
+msgid "top left"
+msgstr ""
+
+#: admin/views/position.php:25
+msgid "top center"
+msgstr ""
+
+#: admin/views/position.php:26
+msgid "top right"
+msgstr ""
+
+#: admin/views/position.php:29
+msgid "center left"
+msgstr ""
+
+#: admin/views/position.php:30
+msgid "center"
+msgstr ""
+
+#: admin/views/position.php:31
+msgid "center right"
+msgstr ""
+
+#: admin/views/position.php:34
+msgid "bottom left"
+msgstr ""
+
+#: admin/views/position.php:35
+msgid "bottom center"
+msgstr ""
+
+#: admin/views/position.php:36
+msgid "bottom right"
+msgstr ""
+
+#: admin/views/position.php:43
+msgid "These settings are deprecated. Please, set width and height for the ad itself."
+msgstr ""
+
+#: admin/views/position.php:44
+msgid "Enter banner width and height to correctly center the ad."
+msgstr ""
+
+#: admin/views/position.php:45
+#: admin/views/position.php:46
+msgid "banner width"
+msgstr ""
+
+#: admin/views/position.php:48
+#: admin/views/position.php:49
+msgid "banner height"
+msgstr ""
+
+#: admin/views/position.php:55
+msgid "Choose a position on the screen."
+msgstr ""
+
+#: admin/views/settings/general/enable-fancybox.php:10
+msgid "Activate this if you want to use Fancybox plugin for popup windows"
+msgstr ""
+
+#: admin/views/size.php:3
+msgid "width"
+msgstr ""
+
+#: admin/views/size.php:6
+msgid "height"
+msgstr ""
+
+#: admin/views/size.php:9
+msgid "Needed sometimes to center the ad correctly"
+msgstr ""
+
+#: admin/views/trigger.php:3
+msgid "right away"
+msgstr ""
+
+#: admin/views/trigger.php:4
+msgid "when user stops scrolling"
+msgstr ""
+
+#: admin/views/trigger.php:5
+msgid "after user scrolled to second half of the page"
+msgstr ""
+
+#. translators: %s: number of pixels
+#: admin/views/trigger.php:8
+msgid "after user scrolled %s px"
+msgstr ""
+
+#: admin/views/trigger.php:10
+msgid "when a user wants to leave the page"
+msgstr ""
+
+#. translators: %s: number of seconds
+#: admin/views/trigger.php:13
+msgid "after %s seconds"
+msgstr ""
+
+#. translators: 1: is a link to a support document. 2: closing link
+#: includes/class-autoloader.php:113
+msgid "Your installation of Advanced Ads is incomplete. If you installed Advanced Ads from GitHub, %1$s please refer to this document%2$s to set up your development environment."
+msgstr ""
+
+#. translators: %s: WP_ENVIRONMENT_TYPES
+#: includes/class-autoloader.php:157
+msgid "The %s constant is no longer supported."
+msgstr ""
+
+#: includes/class-bootstrap.php:95
+msgid "<strong>Advanced Ads – PopUp and Layer Ads</strong> requires the <strong>Advanced Ads free</strong> plugin to be installed and activated on your site."
+msgstr ""
+
+#. translators: %s: Plugin name
+#: includes/class-bootstrap.php:109
+msgid "Your version of <strong>Advanced Ads – PopUp and Layer Ads</strong> is incompatible with <strong>Advanced Ads %s</strong> and has been deactivated. Please update the plugin to the latest version."
+msgstr ""
+
+#: includes/class-bootstrap.php:129
+#: includes/class-bootstrap.php:152
+msgid "Important Notice"
+msgstr ""
+
+#: includes/class-bootstrap.php:130
+msgid "Addons listed below requires the <strong><a href=\"https://wpadvancedads.com/?utm_source=advanced-ads&utm_medium=link&utm_campaign=activate-layer\" target=\"_blank\">Advanced Ads</a></strong> plugin to be installed and activated on your site."
+msgstr ""
+
+#. translators: %s: Plugin name
+#: includes/class-bootstrap.php:155
+msgid "Your versions of the Advanced Ads addons listed below are incompatible with <strong>Advanced Ads %s</strong> and have been deactivated. Please update the plugin to the latest version."
+msgstr ""
+
+#: includes/class-bootstrap.php:180
+msgid "The following addons are affected:"
+msgstr ""
+
+#: includes/class-bootstrap.php:225
+msgid "Install Now"
+msgstr ""
+
+#: includes/class-bootstrap.php:233
+msgid "Activate Now"
+msgstr ""
+
+#: includes/placements/types/class-layer.php:47
+msgid "PopUp and Layer Ads"
+msgstr ""
+
+#: includes/placements/types/class-layer.php:56
+msgid "Create PopUp or Layer Ad"
+msgstr ""
+
+#: public/public.php:567
+msgid "close"
+msgstr ""

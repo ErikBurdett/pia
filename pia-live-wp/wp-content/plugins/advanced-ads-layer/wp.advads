@@ -1,0 +1,46 @@
+{
+  "wp": {
+    "name": "Advanced Ads – PopUp and Layer Ads",
+    "description": "Create PopUp, Layer ads and Overlays",
+    "version": "2.0.2",
+    "requireWP": "5.7",
+    "requirePHP": "7.4",
+    "textDomain": "advanced-ads-layer",
+    "glotpress": "popup-and-layer-ads"
+  },
+  "paths": {
+    "php": "includes",
+    "views": "views",
+    "updates": "updates",
+    "javascript": "assets/src",
+    "css": "assets/css"
+  },
+  "misc": {
+    "package": "AdvancedAds\\Layer",
+    "prefix": "wp_advads_layer",
+    "constprefix": "AA_LAYER"
+  },
+  "year": 2025,
+  "company": {
+    "name": "Advanced Ads",
+    "url": "https://wpadvancedads.com/"
+  },
+  "author": {
+    "name": "Advanced Ads",
+    "email": "info@wpadvancedads.com",
+    "url": "https://wpadvancedads.com/"
+  },
+  "package": {
+    "vendor": "advanced-ads",
+    "name": "advanced-ads-pop-up-and-layer-ads"
+  },
+  "glotpress": {
+    "project": "popup-and-layer-ads",
+    "destination": "./languages/"
+  },
+  "wpPot": {
+    "output": "/languages/",
+    "file": "advanced-ads-layer.pot",
+    "domain": "advanced-ads-layer"
+  }
+}

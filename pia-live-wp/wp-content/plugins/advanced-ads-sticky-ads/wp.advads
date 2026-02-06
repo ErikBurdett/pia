@@ -1,0 +1,46 @@
+{
+  "wp": {
+    "name": "Advanced Ads – Sticky Ads",
+    "description": "Advanced ad positioning.",
+    "version": "2.0.3",
+    "requireWP": "5.7",
+    "requirePHP": "7.4",
+    "textDomain": "advanced-ads-sticky",
+    "glotpress": "sticky-ads"
+  },
+  "paths": {
+    "php": "includes",
+    "views": "views",
+    "updates": "updates",
+    "javascript": "assets/src",
+    "css": "assets/css"
+  },
+  "misc": {
+    "package": "AdvancedAds\\StickyAds",
+    "prefix": "wp_advads_stickyads",
+    "constprefix": "AA_STICKY_ADS"
+  },
+  "year": 2025,
+  "company": {
+    "name": "Advanced Ads",
+    "url": "https://wpadvancedads.com/"
+  },
+  "author": {
+    "name": "Advanced Ads",
+    "email": "info@wpadvancedads.com",
+    "url": "https://wpadvancedads.com/"
+  },
+  "package": {
+    "vendor": "advanced-ads",
+    "name": "advanced-ads-sticky-ads"
+  },
+  "glotpress": {
+    "project": "sticky-ads",
+    "destination": "./languages/"
+  },
+  "wpPot": {
+    "output": "/languages/",
+    "file": "advanced-ads-sticky.pot",
+    "domain": "advanced-ads-sticky"
+  }
+}

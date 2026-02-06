@@ -1,0 +1,70 @@
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-enable length-zero-no-unit */
+.awb-text-path {
+  --awb-path-width: 250px;
+  --awb-path-rotation: 0;
+  --awb-word-spacing: normal;
+  --awb-text-align: start;
+  --awb-text-font-family: inherit;
+  --awb-text-font-style: inherit;
+  --awb-text-font-weight: inherit;
+  --awb-font-size: inherit;
+  --awb-line-height: inherit;
+  --awb-letter-spacing: inherit;
+  --awb-text-transform: inherit;
+  --awb-text-color: inherit;
+  --awb-text-stroke-width: 1px;
+  --awb-text-stroke-color: var(--primary_color);
+  --awb-path-stroke-width: 1px;
+  --awb-path-stroke-color: var(--primary_color);
+  --awb-path-fill-color: transparent;
+  --awb-padding-top: 0;
+  --awb-padding-right: 0;
+  --awb-padding-bottom: 0;
+  --awb-padding-left: 0;
+  --awb-margin-top: 0;
+  --awb-margin-right: 0;
+  --awb-margin-bottom: 0;
+  --awb-margin-left: 0;
+  text-align: var(--awb-text-align);
+  font-family: var(--awb-text-font-family);
+  font-style: var(--awb-text-font-style);
+  font-weight: var(--awb-text-font-weight);
+  font-size: var(--awb-font-size);
+  line-height: var(--awb-line-height);
+  letter-spacing: var(--awb-letter-spacing);
+  text-transform: var(--awb-text-transform);
+  padding-top: var(--awb-padding-top);
+  padding-right: var(--awb-padding-right);
+  padding-bottom: var(--awb-padding-bottom);
+  padding-left: var(--awb-padding-left);
+  margin-top: var(--awb-margin-top);
+  margin-right: var(--awb-margin-right);
+  margin-bottom: var(--awb-margin-bottom);
+  margin-left: var(--awb-margin-left);
+}
+.awb-text-path svg {
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+  transform: rotate(var(--awb-path-rotation));
+  width: var(--awb-path-width);
+  word-spacing: var(--awb-word-spacing);
+}
+.awb-text-path g {
+  transform-origin: center;
+}
+.awb-text-path .awb-text-path__path {
+  fill: var(--awb-path-fill-color);
+}
+.awb-text-path .awb-text-path__path_yes {
+  stroke-width: var(--awb-path-stroke-width);
+  stroke: var(--awb-path-stroke-color);
+}
+.awb-text-path .awb-text-path__text-path {
+  fill: var(--awb-text-color);
+}
+.awb-text-path .awb-text-path__text-path_yes {
+  stroke-width: var(--awb-text-stroke-width);
+  stroke: var(--awb-text-stroke-color);
+}

@@ -1,0 +1,177 @@
+.fusion-form-form-wrapper .fusion-form-upload-field {
+  -awb-preview-thumb-width: 115px;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .fusion-form-upload-field-button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 100;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .fusion-form-upload-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 25px;
+  width: 100%;
+  margin: 0;
+  min-height: 134px;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: var(--awb-form-border-color);
+  line-height: normal;
+  transition: all 0.2s ease;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.add-remove,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale {
+  z-index: 101;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-filenames,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-list,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 1.5em;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+  gap: calc(var(--awb-preview-thumb-width) * 0.125);
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs > * {
+  width: var(--awb-preview-thumb-width);
+  height: auto;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs img {
+  border-radius: var(--awb-form-border-radius);
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs .awb-file-type {
+  text-transform: uppercase;
+  font-size: 1.25em;
+  margin-top: 0.8em;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs .awb-file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(var(--awb-preview-thumb-width) * 0.875);
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-image,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-image span,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-file span {
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-image:hover,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-file:hover {
+  transform: scale(1.25);
+  font-size: 0.8em;
+  z-index: 2;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-image:hover .awb-file-name,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-file:hover .awb-file-name {
+  overflow: visible;
+  white-space: wrap;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-image:hover .awb-upload-remove,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-file:hover .awb-upload-remove {
+  opacity: 0.6;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-image:hover .awb-upload-remove:hover,
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-uploads-preview.scale .awb-preview-file:hover .awb-upload-remove:hover {
+  opacity: 0.8;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-file {
+  padding: calc(var(--awb-preview-thumb-width) * 0.0625);
+  border: 1px solid var(--awb-form-border-color);
+  border-radius: var(--awb-form-border-radius);
+  background-color: var(--awb-form-bg-color);
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-file i {
+  font-size: 1.25em;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-upload-remove {
+  background: none;
+  border: none;
+  border-radius: 0;
+  background-color: var(--awb-form-bg-color);
+  opacity: 0.35;
+  box-sizing: content-box;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-upload-remove:hover {
+  opacity: 0.8;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-filenames strong:last-of-type > span {
+  display: none;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-filenames .awb-upload-remove {
+  padding: 2.5px;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-list .awb-upload-remove {
+  padding: 2.5px 7.5px;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs .awb-upload-remove {
+  position: absolute;
+  top: 0;
+  padding: 7.5px;
+}
+.ltr .fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs .awb-upload-remove {
+  right: 0;
+}
+.rtl .fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container .awb-preview-thumbs .awb-upload-remove {
+  left: 0;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  height: 100%;
+}
+.fusion-form-form-wrapper .fusion-form-field .fusion-form-upload-field-container:hover .fusion-form-upload-field {
+  border-color: var(--awb-form-focus-border-hover-color);
+}
+.fusion-form-form-wrapper .fusion-form-field.fusion-form-upload-field .fusion-form-input-with-icon i {
+  left: 0 !important;
+  right: 0;
+  top: 20px;
+  transform: none;
+  font-size: 25px;
+  line-height: 1;
+}
+.fusion-form-form-wrapper .fusion-form-field.fusion-form-upload-field .fusion-form-input-with-icon .fusion-form-upload-field {
+  padding: 55px 25px 20px 25px;
+}
+.fusion-form-form-wrapper .fusion-form-field.fusion-form-upload-field.dragged .fusion-form-upload-field {
+  border-color: var(--awb-form-focus-border-color);
+}
+.fusion-form-form-wrapper .fusion-form-field.fusion-form-upload-field.focused .fusion-form-upload-field {
+  border-color: var(--awb-form-focus-border-color);
+}
+.fusion-form-form-wrapper .fusion-form-field.error .awb-upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #e0284f !important;
+}

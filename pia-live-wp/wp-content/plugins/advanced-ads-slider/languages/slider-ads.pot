@@ -1,0 +1,114 @@
+# Copyright (C) 2025 Advanced Ads
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Ads – Slider 2.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/advanced-ads-slider\n"
+"Last-Translator: Thomas Maier <post@webzunft.de>\n"
+"Language-Team: webgilde <support@wpadvancedads.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-04-09T03:26:39+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: slider-ads\n"
+
+#. Plugin Name of the plugin
+#: slider.php
+msgid "Advanced Ads – Slider"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: slider.php
+msgid "https://wpadvancedads.com/add-ons/slider/"
+msgstr ""
+
+#. Description of the plugin
+#: slider.php
+msgid "Create a slider from your ads."
+msgstr ""
+
+#. Author of the plugin
+#: slider.php
+msgid "Advanced Ads"
+msgstr ""
+
+#. Author URI of the plugin
+#: slider.php
+msgid "https://wpadvancedads.com"
+msgstr ""
+
+#: includes/admin/class-admin.php:69
+msgid "Slide delay"
+msgstr ""
+
+#: includes/admin/class-admin.php:71
+msgid "Pause for each ad slide in milliseconds"
+msgstr ""
+
+#: includes/admin/class-admin.php:83
+msgid "Random order"
+msgstr ""
+
+#: includes/admin/class-admin.php:85
+msgid "Display ads in the slider in a random order"
+msgstr ""
+
+#. translators: 1: is a link to a support document. 2: closing link
+#: includes/class-autoloader.php:113
+msgid "Your installation of Advanced Ads is incomplete. If you installed Advanced Ads from GitHub, %1$s please refer to this document%2$s to set up your development environment."
+msgstr ""
+
+#. translators: %s: WP_ENVIRONMENT_TYPES
+#: includes/class-autoloader.php:157
+msgid "The %s constant is no longer supported."
+msgstr ""
+
+#: includes/class-bootstrap.php:71
+#: includes/class-bootstrap.php:78
+msgid "Advanced Ads - Slider"
+msgstr ""
+
+#: includes/class-bootstrap.php:95
+msgid "<strong>Advanced Ads - Slider</strong> requires the <strong>Advanced Ads free</strong> plugin to be installed and activated on your site."
+msgstr ""
+
+#. translators: %s: Plugin name
+#: includes/class-bootstrap.php:109
+msgid "Your version of <strong>Advanced Ads - Slider</strong> is incompatible with <strong>Advanced Ads %s</strong> and has been deactivated. Please update the plugin to the latest version."
+msgstr ""
+
+#: includes/class-bootstrap.php:129
+#: includes/class-bootstrap.php:152
+msgid "Important Notice"
+msgstr ""
+
+#: includes/class-bootstrap.php:130
+msgid "Addons listed below requires the <strong><a href=\"https://wpadvancedads.com/?utm_source=advanced-ads&utm_medium=link&utm_campaign=activate-slider-ads\" target=\"_blank\">Advanced Ads</a></strong> plugin to be installed and activated on your site."
+msgstr ""
+
+#. translators: %s: Plugin name
+#: includes/class-bootstrap.php:155
+msgid "Your versions of the Advanced Ads addons listed below are incompatible with <strong>Advanced Ads %s</strong> and have been deactivated. Please update the plugin to the latest version."
+msgstr ""
+
+#: includes/class-bootstrap.php:180
+msgid "The following addons are affected:"
+msgstr ""
+
+#: includes/class-bootstrap.php:225
+msgid "Install Now"
+msgstr ""
+
+#: includes/class-bootstrap.php:233
+msgid "Activate Now"
+msgstr ""
+
+#: includes/class-group-types.php:40
+msgid "Ad Slider"
+msgstr ""
+
+#: includes/class-group-types.php:41
+msgid "Display all ads as a slider"
+msgstr ""

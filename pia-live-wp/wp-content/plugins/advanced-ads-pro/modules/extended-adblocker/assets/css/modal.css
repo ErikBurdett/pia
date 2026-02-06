@@ -1,0 +1,99 @@
+.advads-modal {
+	display: none;
+	position: fixed;
+	z-index: -1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(34, 34, 34, 0.4);
+	opacity: 0;
+	pointer-events: none;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+}
+
+.advads-modal:target,
+.advads-modal[open] {
+	display: flex;
+	align-items: center;
+	opacity: 1;
+	pointer-events: auto;
+	z-index: 9999;
+}
+
+dialog.advads-modal {
+	padding: 0;
+	border: 0;
+	margin: 0;
+	max-width: 100vw;
+	max-height: 100vh;
+}
+
+.advads-modal-content {
+	background-color: #fff;
+	border: 3px solid #20802d;
+	border-radius: 10px;
+	box-shadow:
+		0 4px 8px 0 rgba(0, 0, 0, 0.2),
+		0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-sizing: border-box;
+	margin: calc(5vh + var(--wp-admin--admin-bar--height, 0px)) auto 5vh;
+	width: 50em;
+	max-width: 50em;
+	max-height: calc(90vh - var(--wp-admin--admin-bar--height, 0px));
+	height: auto;
+	animation-name: advads-modal-animatetop;
+	animation-duration: 0.4s;
+	position: relative;
+	padding: 40px;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.advads-modal-body {
+	padding: 16px 16px;
+}
+
+.close-wrapper {
+	display: flex;
+	justify-content: center;
+	margin: 1em 0;
+}
+
+button.advads-modal-close-action {
+	padding: 10px 20px;
+	border-radius: 3px;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	outline: inherit;
+	color: #fff;
+	border: 1px solid #0474a2;
+	margin: auto 40px;
+	background-color: #20802d;
+}
+
+@keyframes advads-modal-animatetop {
+	from {
+		top: -300px;
+		opacity: 0;
+	}
+
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+
+.advads-ui-autocomplete.ui-front {
+	z-index: 10000;
+}
+
+@media (min-width: 60em) {
+	.advads-modal-content {
+		margin: 5% auto;
+	}
+}

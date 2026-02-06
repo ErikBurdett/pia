@@ -1,0 +1,6 @@
+.fusion-post-card-image .awb-pc-image__swap-nav {
+  display: none;
+}
+.fusion-post-card-image .awb-pc-image__swap-nav-mobile {
+  display: flex;
+}

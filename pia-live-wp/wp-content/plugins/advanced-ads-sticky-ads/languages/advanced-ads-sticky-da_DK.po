@@ -1,0 +1,323 @@
+# Translation of Sticky Ads in Danish
+# This file is distributed under the same license as the Sticky Ads package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-05-12 10:09:07+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: da_DK\n"
+"Project-Id-Version: Sticky Ads\n"
+
+#. translators: 1: is a link to a support document. 2: closing link
+#: includes/class-autoloader.php:113
+msgid "Your installation of Advanced Ads is incomplete. If you installed Advanced Ads from GitHub, %1$s please refer to this document%2$s to set up your development environment."
+msgstr "Din installation af Advanced Ads er ufuldstændig. Hvis du har installeret Advanced Ads fra GitHub, %1$s, se venligst dette dokument%2$s for at konfigurere dit udviklingsmiljø."
+
+#. translators: %s: WP_ENVIRONMENT_TYPES
+#: includes/class-autoloader.php:157
+msgid "The %s constant is no longer supported."
+msgstr "%s konstanten understøttes ikke længere."
+
+#: includes/admin/class-metabox.php:60 includes/admin/class-settings.php:43
+#: includes/admin/class-settings.php:52
+msgid "Sticky Ads"
+msgstr "Sticky Ads"
+
+#: includes/admin/class-placement-settings.php:146
+msgctxt "frontend picker"
+msgid "stop selection"
+msgstr "stop valg"
+
+#. Author of the plugin
+#: sticky-ads.php
+msgid "Advanced Ads GmbH"
+msgstr "Advanced Ads GmbH"
+
+#. Author URI of the plugin
+#: sticky-ads.php
+msgid "https://wpadvancedads.com"
+msgstr "https://wpadvancedads.com"
+
+#. Plugin URI of the plugin
+#: sticky-ads.php
+msgid "http://wpadvancedads.com/add-ons/sticky-ads/"
+msgstr "http://wpadvancedads.com/add-ons/sticky-ads/"
+
+#. Description of the plugin
+#: sticky-ads.php
+msgid "Advanced ad positioning."
+msgstr "Avanceret annonce positionering."
+
+#. Plugin Name of the plugin
+#: sticky-ads.php
+msgid "Advanced Ads – Sticky Ads"
+msgstr "Advanced Ads – Sticky Ads"
+
+#: views/admin/vertical-center.php:22
+msgid "center vertically"
+msgstr "centrer lodret "
+
+#. translators: %s: number of seconds
+#: views/admin/trigger.php:39
+msgid "after %s seconds"
+msgstr "efter %s sekunder"
+
+#: views/admin/trigger.php:30
+msgid "right away with effect"
+msgstr "Virker med det samme"
+
+#: views/admin/trigger.php:25
+msgid "right away"
+msgstr "med det samme"
+
+#: views/admin/size.php:35
+msgid "Needed in case the ad does not center correctly"
+msgstr "Nødvendige i tilfælde at, annoncen ikke centrere korrekt"
+
+#: views/admin/size.php:29
+msgid "height"
+msgstr "højde"
+
+#: views/admin/size.php:22
+msgid "width"
+msgstr "bredde"
+
+#: views/admin/metabox.php:66
+msgid "bottom"
+msgstr "bund"
+
+#: views/admin/metabox.php:56
+msgid "top"
+msgstr "top"
+
+#: views/admin/metabox.php:52
+msgid "Use numbers in every field you want to be considered for positioning (top, left, right, bottom of the page). Leave a field empty to not set a position for this side. The number is considered to be in pixels."
+msgstr "Brug tal i hvert felt, hvor du vil overveje som positionering (øverst, venstre, højre, nederst på siden). Efterlad et felt tomt, for ikke at indstille en position til denne side. Antallet anses for at være i pixels. "
+
+#: views/admin/metabox.php:51
+msgid "Define position manually"
+msgstr "Definer position manuelt "
+
+#: views/admin/metabox.php:47
+msgid "banner width"
+msgstr "banner bredde"
+
+#: views/admin/metabox.php:46
+msgid "Enter banner width to correctly center the ad."
+msgstr "Indtast banner bredden, for at centrere annoncen korrekt. "
+
+#: views/admin/metabox.php:43
+msgid "bottom right"
+msgstr "bund, højre"
+
+#: views/admin/metabox.php:42
+msgid "bottom center"
+msgstr "bund, center"
+
+#: views/admin/metabox.php:41
+msgid "bottom left"
+msgstr "bund, venstre"
+
+#: views/admin/metabox.php:38
+msgid "center right"
+msgstr "center, højre"
+
+#: views/admin/metabox.php:37
+msgid "center"
+msgstr "center"
+
+#: views/admin/metabox.php:36
+msgid "center left"
+msgstr "center, venstre"
+
+#: views/admin/metabox.php:33
+msgid "top right"
+msgstr "top, højre"
+
+#: views/admin/metabox.php:32
+msgid "top center"
+msgstr "top, center"
+
+#: views/admin/metabox.php:31
+msgid "top left"
+msgstr "top, venstre"
+
+#: views/admin/metabox.php:27
+msgid "Choose a position on the screen."
+msgstr "Vælg en position på skærmen."
+
+#: views/admin/metabox.php:26
+msgid "Select a position"
+msgstr "Vælg en position"
+
+#: views/admin/metabox.php:23
+msgid "Stick ad to a specific position on the screen"
+msgstr "Fastgør annoncen til en bestemt position på skærmen"
+
+#. translators: placement admin url
+#: views/admin/metabox.php:16
+msgid "These settings are deprecated. Sticky ads are now managed through <a href=\"%s\">placements</a>. Please convert your settings as soon as possible."
+msgstr "Disse indstillinger er udfaset. Sticky ads administreres nu via <a href=\"%s\">placeringer</a>. Konverter dine indstillinger så hurtigt som muligt."
+
+#: views/admin/effects.php:39
+msgid "Duration of the effect (in milliseconds)."
+msgstr "Varigheden af effekten (i millisekunder)."
+
+#: views/admin/effects.php:34
+msgid "Type of effect when the ad is being displayed"
+msgstr "effekttype, når annoncen bliver vist"
+
+#: views/admin/effects.php:30
+msgid "Slide in"
+msgstr "Slide ind"
+
+#: views/admin/effects.php:26
+msgid "Fade in"
+msgstr "Fade ind"
+
+#: views/admin/effects.php:22
+msgid "Show"
+msgstr "Vis"
+
+#: views/admin/close-button.php:67
+msgid "days, 0 = after current session"
+msgstr "dage, 0 = efter aktuelle session"
+
+#: views/admin/close-button.php:63
+msgid "close the ad for …"
+msgstr "luk annoncen for ..."
+
+#: views/admin/close-button.php:58
+msgid "enable timeout"
+msgstr "aktivere timeout"
+
+#: views/admin/close-button.php:51 views/admin/metabox.php:62
+msgid "right"
+msgstr "højre"
+
+#: views/admin/close-button.php:47 views/admin/metabox.php:60
+msgid "left"
+msgstr "venstre"
+
+#: views/admin/close-button.php:42
+msgid "inside"
+msgstr "inde i"
+
+#: views/admin/close-button.php:38
+msgid "outside"
+msgstr "uden for"
+
+#: views/admin/close-button.php:29
+msgid "add close button"
+msgstr "tilføj luk knappe"
+
+#: includes/class-wrappers.php:690
+msgid "close"
+msgstr "luk"
+
+#: includes/admin/class-placement-settings.php:157
+msgid "parent element"
+msgstr "overordnede element"
+
+#: includes/admin/class-placement-settings.php:150
+msgid "Use <a href=\"https://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery selectors</a> to select a custom parent element or if automatic wrapper detection doesn’t work, e.g. #container_id, .container_class"
+msgstr "Brug <a href=\"https://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery vælgerne</a> til at vælge et brugerdefineret og overordnet element, eller hvis automatisk wrapper detektionen ikke virker, fx. #container_id, .container_class"
+
+#: includes/admin/class-placement-settings.php:147
+msgid "select position"
+msgstr "vælg position"
+
+#: views/admin/close-button.php:34 views/admin/vertical-center.php:29
+msgid "Position"
+msgstr "Position"
+
+#: views/admin/vertical-center.php:18
+msgid "fix to window position"
+msgstr "fix til vindues-position"
+
+#: views/admin/size.php:42
+msgid "size"
+msgstr "størrelse"
+
+#: views/admin/close-button.php:76
+msgid "close button"
+msgstr "luk knappe"
+
+#: views/admin/effects.php:46
+msgid "effect"
+msgstr "effekt"
+
+#: views/admin/trigger.php:51
+msgid "show the ad"
+msgstr "vis annoncen"
+
+#: includes/admin/class-placement-settings.php:124
+msgid "background"
+msgstr "baggrund"
+
+#: includes/admin/class-placement-settings.php:118
+msgid "When selecting a background color, the sticky bar will cover the whole screen width."
+msgstr "Når du vælger en baggrundsfarve, dækker den fastgjorte bar, hele skærmbredden."
+
+#: includes/types/class-sticky-right-window.php:56
+msgid "Bar on the right side of the window."
+msgstr "Bar i højre side af vinduet."
+
+#: includes/types/class-sticky-right-window.php:47
+msgid "Right Bar"
+msgstr "Højre bar"
+
+#: includes/types/class-sticky-left-window.php:56
+msgid "Bar on the left side of the window."
+msgstr "Bar i venstre side af vinduet."
+
+#: includes/types/class-sticky-left-window.php:47
+msgid "Left Bar"
+msgstr "Venstre bar"
+
+#: includes/types/class-sticky-right-sidebar.php:56
+msgid "Sidebar on the right side of the content wrapper."
+msgstr "Sidebar på højre side, af indholds wrapper."
+
+#: includes/types/class-sticky-right-sidebar.php:47
+msgid "Right Sidebar"
+msgstr "Højre sidebar"
+
+#: includes/types/class-sticky-left-sidebar.php:56
+msgid "Sidebar on the left side of the content wrapper."
+msgstr "Sidebar på venstre side, af indholds wrapper."
+
+#: includes/types/class-sticky-left-sidebar.php:47
+msgid "Left Sidebar"
+msgstr "Venstre sidebar"
+
+#: includes/types/class-sticky-footer.php:56
+msgid "Fixed footer bar."
+msgstr "Fast sidefods bar."
+
+#: includes/types/class-sticky-footer.php:47
+msgid "Footer Bar"
+msgstr "Sidefod bar"
+
+#: includes/types/class-sticky-header.php:56
+msgid "Fixed header bar."
+msgstr "Fast sidehovede bar."
+
+#: includes/types/class-sticky-header.php:47
+msgid "Header Bar"
+msgstr "Sidehovede bar."
+
+#: views/admin/settings/general/activate-sticky-ads.php:15
+msgid "Activate this if you experience problems with sticky ads and/or a lot of your visitors use old mobile devices. It will check browser capability and position the ad inline after scrolling. Technically speaking: removes <em>position: fixed</em>, if not supported."
+msgstr "Aktivér dette, hvis du oplever problemer med fastgjorte annoncer og/eller, hvis mange af dine besøgende bruger gamle mobil enheder. Dette vil kontrollere browserens kapacitet og placere annoncen inline efter scrolling. Teknisk set: fjernes <em>position: fixed</em>, hvis den ikke understøttes."
+
+#: includes/admin/class-settings.php:94
+msgid "Settings for the Sticky Ads add-on"
+msgstr "Indstillinger for Sticky ads udvidelsen"
+
+#: includes/admin/class-settings.php:60
+msgid "Check browser capability"
+msgstr "Tjek browserens kapabilitet"

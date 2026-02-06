@@ -1,0 +1,275 @@
+# Translation of PopUp and Layer Ads in Greek
+# This file is distributed under the same license as the PopUp and Layer Ads package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-04-08 15:56:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: el_GR\n"
+"Project-Id-Version: PopUp and Layer Ads\n"
+
+#. translators: 1: is a link to a support document. 2: closing link
+#: includes/class-autoloader.php:113
+msgid "Your installation of Advanced Ads is incomplete. If you installed Advanced Ads from GitHub, %1$s please refer to this document%2$s to set up your development environment."
+msgstr "Η εγκατάσταση των Προηγμένων Διαφημίσεων δεν έχει ολοκληρωθεί. Εάν εγκαταστήσατε τις Προηγμένες Διαφημίσεις από το GitHub, %1$s, ανατρέξτε σε αυτό το έγγραφο%2$s για να ρυθμίσετε το περιβάλλον ανάπτυξής σας."
+
+#. translators: %s: WP_ENVIRONMENT_TYPES
+#: includes/class-autoloader.php:157
+msgid "The %s constant is no longer supported."
+msgstr "Η σταθερά %s δεν υποστηρίζεται πλέον."
+
+#. Author of the plugin
+#: layer-ads.php
+msgid "Advanced Ads GmbH"
+msgstr "Προηγμένες Διαφημίσεις GmbH"
+
+#: admin/admin.php:85
+msgid "Install Now"
+msgstr "Εγκατάσταση Τώρα"
+
+#: admin/admin.php:83
+msgid "Activate Now"
+msgstr "Ενεργοποίηση Τώρα"
+
+#. translators: %s link to Advanced Ads plugin
+#: admin/admin.php:89
+msgid "<strong>%s</strong> requires the <strong><a href=\"https://wpadvancedads.com/?utm_source=advanced-ads&utm_medium=link&utm_campaign=activate-layer\" target=\"_blank\">Advanced Ads</a></strong> plugin to be installed and activated on your site."
+msgstr "Το <strong>%s</strong> απαιτεί το πρόσθετο <strong><a href=\"https://wpadvancedads.com/?utm_source=advanced-ads&utm_medium=link&utm_campaign=activate-layer\" target=\"_blank\">Προηγμένες Διαφηνίσεις</a></strong> που θα εγκατασταθεί και θα ενεργοποιηθεί στον ιστότοπό σας."
+
+#. translators: %s: number of seconds
+#: admin/views/trigger.php:13
+msgid "after %s seconds"
+msgstr "μετά από %s δευτερόλεπτα"
+
+#: admin/views/background.php:6
+msgid "close all ads with click on the background"
+msgstr "κλείστε όλες τις διαφημίσεις κάνοντας κλικ στο φόντο"
+
+#. translators: %s: number of seconds
+#: admin/views/auto_close.php:10
+msgid "close after %s seconds"
+msgstr "κλείσιμο μετά από %s δευτερόλεπτα"
+
+#: admin/admin.php:371
+msgid "It is against the AdSense policy to use their ads in popups."
+msgstr "Η χρήση των διαφημίσεών τους σε αναδυόμενα παράθυρα είναι αντίθετη με την πολιτική του AdSense."
+
+#: admin/admin.php:314
+msgid "auto close"
+msgstr "αυτόματο κλείσιμο"
+
+#. Author URI of the plugin
+#: layer-ads.php
+msgid "https://wpadvancedads.com"
+msgstr "https://wpadvancedads.com"
+
+#. Plugin URI of the plugin
+#: layer-ads.php
+msgid "https://wpadvancedads.com/add-ons/popup-and-layer-ads/"
+msgstr "https://wpadvancedads.com/add-ons/popup-and-layer-ads/"
+
+#. Description of the plugin
+#: layer-ads.php
+msgid "Create PopUp, Layer ads and Overlays"
+msgstr "Δημιουργήστε αναδυόμενες διαφημίσεις, διαφημίσεις επιπέδου και επικαλύψεις"
+
+#. Plugin Name of the plugin
+#: layer-ads.php
+msgid "Advanced Ads – PopUp and Layer Ads"
+msgstr "Προηγμένες Διαφημίσεις – Αναδυόμενες διαφημίσεις και διαφημίσεις επιπέδου"
+
+#: admin/views/trigger.php:10
+msgid "when a user wants to leave the page"
+msgstr "όταν ο χρήστης θέλει να φύγει από τη σελίδα"
+
+#: admin/views/size.php:9
+msgid "Needed sometimes to center the ad correctly"
+msgstr "Μερικές φορές χρειάζεται για να κεντράρετε σωστά τη διαφήμιση"
+
+#: admin/views/size.php:6
+msgid "height"
+msgstr "ύψος"
+
+#: admin/views/size.php:3
+msgid "width"
+msgstr "πλάτος"
+
+#: admin/views/position.php:55
+msgid "Choose a position on the screen."
+msgstr "Επιλέξτε μια θέση στην οθόνη."
+
+#: admin/views/position.php:48 admin/views/position.php:49
+msgid "banner height"
+msgstr "ύψος banner"
+
+#: admin/views/position.php:45 admin/views/position.php:46
+msgid "banner width"
+msgstr "πλάτος banner"
+
+#: admin/views/position.php:44
+msgid "Enter banner width and height to correctly center the ad."
+msgstr "Εισαγάγετε το πλάτος και το ύψος του banner για να κεντράρετε σωστά τη διαφήμιση."
+
+#: admin/views/position.php:43
+msgid "These settings are deprecated. Please, set width and height for the ad itself."
+msgstr "Αυτές οι ρυθμίσεις έχουν καταργηθεί. Ορίστε πλάτος και ύψος για την ίδια τη διαφήμιση."
+
+#: admin/views/position.php:36
+msgid "bottom right"
+msgstr "κάτω δεξιά"
+
+#: admin/views/position.php:35
+msgid "bottom center"
+msgstr "κάτω κέντρο"
+
+#: admin/views/position.php:34
+msgid "bottom left"
+msgstr "κάτω αριστερά"
+
+#: admin/views/position.php:31
+msgid "center right"
+msgstr "κέντρο δεξιά"
+
+#: admin/views/position.php:30
+msgid "center"
+msgstr "κέντρο"
+
+#: admin/views/position.php:29
+msgid "center left"
+msgstr "κέντρο αριστερά"
+
+#: admin/views/position.php:26
+msgid "top right"
+msgstr "πάνω δεξιά"
+
+#: admin/views/position.php:25
+msgid "top center"
+msgstr "πάνω κέντρο"
+
+#: admin/views/position.php:24
+msgid "top left"
+msgstr "πάνω αριστερά"
+
+#. translators: %s: number of pixels
+#: admin/views/trigger.php:8
+msgid "after user scrolled %s px"
+msgstr "αφού ο χρήστης έκανε κύλιση %s px"
+
+#: admin/views/trigger.php:5
+msgid "after user scrolled to second half of the page"
+msgstr "αφού ο χρήστης έκανε κύλιση στο δεύτερο μισό της σελίδας"
+
+#: admin/views/trigger.php:4
+msgid "when user stops scrolling"
+msgstr "όταν ο χρήστης σταματά την κύλιση"
+
+#: admin/views/trigger.php:3
+msgid "right away"
+msgstr "αμέσως"
+
+#: admin/views/effects.php:7
+msgid "Duration of the effect (in milliseconds)."
+msgstr "Διάρκεια του εφέ (σε χιλιοστά του δευτερολέπτου)."
+
+#: admin/views/effects.php:4
+msgid "Type of effect when the ad is being displayed"
+msgstr "Τύπος εφέ κατά την προβολή της διαφήμισης"
+
+#: admin/views/effects.php:3
+msgid "Slide"
+msgstr "Διαφάνεια"
+
+#: admin/views/effects.php:2
+msgid "Fade in"
+msgstr "Ξεθωριάζω"
+
+#: admin/views/effects.php:1
+msgid "Show"
+msgstr "Προβολή"
+
+#: admin/views/close-button.php:32
+msgid "days, 0 = after current session"
+msgstr "ημέρες, 0 = μετά την τρέχουσα συνεδρία"
+
+#: admin/views/close-button.php:30
+msgid "close the ad for …"
+msgstr "κλείστε τη διαφήμιση για…"
+
+#: admin/views/close-button.php:28
+msgid "enable timeout"
+msgstr "ενεργοποίηση χρονικού ορίου"
+
+#: admin/views/close-button.php:23
+msgid "right"
+msgstr "δεξιά"
+
+#: admin/views/close-button.php:22
+msgid "left"
+msgstr "αριστερά"
+
+#: admin/views/close-button.php:20
+msgid "inside"
+msgstr "μέσα"
+
+#: admin/views/close-button.php:19
+msgid "outside"
+msgstr "έξω"
+
+#: admin/views/close-button.php:14
+msgid "add close button"
+msgstr "πρόσθεσε κουμπί κλεισίματος"
+
+#: public/public.php:532
+msgid "close"
+msgstr "κλείσιμο"
+
+#: admin/admin.php:347
+msgid "size"
+msgstr "μέγεθος"
+
+#: admin/admin.php:334 admin/views/close-button.php:18
+msgid "Position"
+msgstr "Θέση"
+
+#: admin/admin.php:324
+msgid "close button"
+msgstr "κουμπί κλεισίματος"
+
+#: admin/admin.php:304
+msgid "background"
+msgstr "φόντο"
+
+#: admin/views/background.php:3
+msgid "Put a half-transparent overlay over the background of the page if this ad is displayed."
+msgstr "Τοποθετήστε μια μισοδιαφανή επικάλυψη στο φόντο της σελίδας εάν εμφανίζεται αυτή η διαφήμιση."
+
+#: admin/admin.php:291
+msgid "effect"
+msgstr "εφέ"
+
+#: admin/admin.php:278
+msgid "show the ad"
+msgstr "εμφανίστε τη διαφήμιση"
+
+#: includes/placements/types/class-layer.php:56
+msgid "Create PopUp or Layer Ad"
+msgstr "Δημιουργία αναδυόμενης διαφήμισης ή διαφήμισης επιπέδου"
+
+#: admin/admin.php:165 includes/placements/types/class-layer.php:47
+msgid "PopUp and Layer Ads"
+msgstr "Αναδυόμενες διαφημίσεις και διαφημίσεις επιπέδων"
+
+#: admin/views/settings/general/enable-fancybox.php:10
+msgid "Activate this if you want to use Fancybox plugin for popup windows"
+msgstr "Ενεργοποιήστε το εάν θέλετε να χρησιμοποιήσετε την προσθήκη Fancybox για αναδυόμενα παράθυρα"
+
+#: admin/admin.php:182
+msgid "Use Fancybox plugin"
+msgstr "Χρησιμοποιήστε την προσθήκη Fancybox"
+
+#: admin/admin.php:101
+msgid "You shouldn’t have more than one Fancybox on the same page. Please, make sure that you set up the ads for the different layers with display conditions to prevent them from showing up on the same page"
+msgstr "Δεν πρέπει να έχετε περισσότερα από ένα Fancybox στην ίδια σελίδα. Βεβαιωθείτε ότι έχετε ρυθμίσει τις διαφημίσεις για τα διαφορετικά επίπεδα με συνθήκες εμφάνισης, ώστε να μην εμφανίζονται στην ίδια σελίδα"

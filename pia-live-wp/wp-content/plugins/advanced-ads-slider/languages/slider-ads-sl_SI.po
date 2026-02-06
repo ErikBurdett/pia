@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Slider\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-04-09T03:26:39+00:00\n"
+"PO-Revision-Date: 2025-03-28 07:25:00+0000\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n % 100 == 1) ? 0 : ((n % 100 == 2) ? 1 : ((n % 100 == 3 || n % 100 == 4) ? 2 : 3));\n"
+"X-Generator: GlotPress/4.0.1\n"
+
+#. translators: 1: is a link to a support document. 2: closing link
+#: includes/class-autoloader.php:113
+msgid "Your installation of Advanced Ads is incomplete. If you installed Advanced Ads from GitHub, %1$s please refer to this document%2$s to set up your development environment."
+msgstr "Vaša namestitev Advanced Ads ni dokončana. Če ste namestili Advanced Ads iz GitHub, %1$s prosimo, poglejte ta dokument%2$s, da nastavite svoje razvojno okolje."
+
+#. translators: %s: WP_ENVIRONMENT_TYPES
+#: includes/class-autoloader.php:157
+msgid "The %s constant is no longer supported."
+msgstr "Konstanta %s ni več podprta."
+
+#. Author of the plugin
+#: slider.php
+msgid "Advanced Ads GmbH"
+msgstr "Advanced Ads GmbH"
+
+#. Author URI of the plugin
+#: slider.php
+msgid "https://wpadvancedads.com"
+msgstr "https://wpadvancedads.com"
+
+#. Plugin URI of the plugin
+#: slider.php
+msgid "https://wpadvancedads.com/add-ons/slider/"
+msgstr "https://wpadvancedads.com/add-ons/slider/"
+
+#. Description of the plugin
+#: slider.php
+msgid "Create a slider from your ads."
+msgstr "Ustvari drsnik svojih oglasov."
+
+#. Plugin Name of the plugin
+#: slider.php
+msgid "Advanced Ads Slider"
+msgstr "Advanced Ads – drsnik"
+
+#: includes/admin/class-admin.php:84
+msgid "Display ads in the slider in a random order"
+msgstr "Prikaži oglase v drsniku v naključnem vrstnem redu"
+
+#: includes/admin/class-admin.php:82
+msgid "Random order"
+msgstr "Naključni vrstni red"
+
+#: includes/admin/class-admin.php:70
+msgid "Pause for each ad slide in milliseconds"
+msgstr "Pavziraj vsak diapozitiv oglasov v milisekundah"
+
+#: includes/admin/class-admin.php:68
+msgid "Slide delay"
+msgstr "Zamik diapozitiva"
+
+#: includes/class-group-types.php:41
+msgid "Display all ads as a slider"
+msgstr "Prikaži vse oglase kot drsnik"
+
+#: includes/class-group-types.php:40
+msgid "Ad Slider"
+msgstr "Drsnik oglasov"

@@ -1,0 +1,15 @@
+{
+  "name": "rebelcode/wpra-basic",
+  "type": "wordpress-plugin",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "RebelCode\\Aggregator\\Basic\\": "src"
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "7.4"
+    }
+  }
+}

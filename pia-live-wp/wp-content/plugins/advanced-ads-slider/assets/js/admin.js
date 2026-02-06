@@ -1,0 +1,1 @@
+jQuery(document).ready((function(d){d(".advads-ad-group-form").each((function(){"slider"===d(this).find(".advads-ad-group-type input:checked").val()&&d(this).find(".advads-option-group-number").val("all").hide()}))}));

@@ -1,0 +1,323 @@
+# Translation of Sticky Ads in Slovenian
+# This file is distributed under the same license as the Sticky Ads package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2025-03-28 07:20:37+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 100 == 1) ? 0 : ((n % 100 == 2) ? 1 : ((n % 100 == 3 || n % 100 == 4) ? 2 : 3));\n"
+"X-Generator: GlotPress/4.0.1\n"
+"Language: sl_SI\n"
+"Project-Id-Version: Sticky Ads\n"
+
+#. translators: 1: is a link to a support document. 2: closing link
+#: includes/class-autoloader.php:113
+msgid "Your installation of Advanced Ads is incomplete. If you installed Advanced Ads from GitHub, %1$s please refer to this document%2$s to set up your development environment."
+msgstr "Vaša namestitev Advanced Ads ni dokončana. Če ste namestili Advanced Ads iz GitHuba, %1$s prosimo, poglejte ta dokument%2$s, da nastavite svoje razvojno okolje."
+
+#. translators: %s: WP_ENVIRONMENT_TYPES
+#: includes/class-autoloader.php:157
+msgid "The %s constant is no longer supported."
+msgstr "Konstanta %s ni več podprta."
+
+#: includes/admin/class-metabox.php:60 includes/admin/class-settings.php:43
+#: includes/admin/class-settings.php:52
+msgid "Sticky Ads"
+msgstr "Lepljivi oglasi"
+
+#: includes/admin/class-placement-settings.php:146
+msgctxt "frontend picker"
+msgid "stop selection"
+msgstr "zaustavi izbiro"
+
+#. Author of the plugin
+#: sticky-ads.php
+msgid "Advanced Ads GmbH"
+msgstr "Advanced Ads GmbH"
+
+#. Author URI of the plugin
+#: sticky-ads.php
+msgid "https://wpadvancedads.com"
+msgstr "https://wpadvancedads.com"
+
+#. Plugin URI of the plugin
+#: sticky-ads.php
+msgid "http://wpadvancedads.com/add-ons/sticky-ads/"
+msgstr "http://wpadvancedads.com/add-ons/sticky-ads/"
+
+#. Description of the plugin
+#: sticky-ads.php
+msgid "Advanced ad positioning."
+msgstr "Advanced ad postavitve."
+
+#. Plugin Name of the plugin
+#: sticky-ads.php
+msgid "Advanced Ads – Sticky Ads"
+msgstr "Advanced Ads – Sticky Ads"
+
+#: views/admin/vertical-center.php:22
+msgid "center vertically"
+msgstr "poravnaj na sredino vertikalno"
+
+#. translators: %s: number of seconds
+#: views/admin/trigger.php:39
+msgid "after %s seconds"
+msgstr "po %s sekundah"
+
+#: views/admin/trigger.php:30
+msgid "right away with effect"
+msgstr "takoj z efekti"
+
+#: views/admin/trigger.php:25
+msgid "right away"
+msgstr "takoj"
+
+#: views/admin/size.php:35
+msgid "Needed in case the ad does not center correctly"
+msgstr "Potrebno, če se oglas ne poravna pravilno na sredino"
+
+#: views/admin/size.php:29
+msgid "height"
+msgstr "višina"
+
+#: views/admin/size.php:22
+msgid "width"
+msgstr "širina"
+
+#: views/admin/metabox.php:66
+msgid "bottom"
+msgstr "dno"
+
+#: views/admin/metabox.php:56
+msgid "top"
+msgstr "vrh"
+
+#: views/admin/metabox.php:52
+msgid "Use numbers in every field you want to be considered for positioning (top, left, right, bottom of the page). Leave a field empty to not set a position for this side. The number is considered to be in pixels."
+msgstr "Uporabi števila v vsakem polju, za katere želiš upoštevati poravnavo (vrh, levo, desno, dno strani). Pusti polje prazno, da ne nastaviš postavitve na tej strani. Števila so v pikah. "
+
+#: views/admin/metabox.php:51
+msgid "Define position manually"
+msgstr "Nastavi položaj ročno"
+
+#: views/admin/metabox.php:47
+msgid "banner width"
+msgstr "širina pasice"
+
+#: views/admin/metabox.php:46
+msgid "Enter banner width to correctly center the ad."
+msgstr "Vpiši širino pasice, da pravilno poravnaš oglas na sredino."
+
+#: views/admin/metabox.php:43
+msgid "bottom right"
+msgstr "dno desno"
+
+#: views/admin/metabox.php:42
+msgid "bottom center"
+msgstr "dno sredina"
+
+#: views/admin/metabox.php:41
+msgid "bottom left"
+msgstr "dno levo"
+
+#: views/admin/metabox.php:38
+msgid "center right"
+msgstr "sredna desno"
+
+#: views/admin/metabox.php:37
+msgid "center"
+msgstr "sredina"
+
+#: views/admin/metabox.php:36
+msgid "center left"
+msgstr "sredina levo"
+
+#: views/admin/metabox.php:33
+msgid "top right"
+msgstr "vrh desno"
+
+#: views/admin/metabox.php:32
+msgid "top center"
+msgstr "vrh sredina"
+
+#: views/admin/metabox.php:31
+msgid "top left"
+msgstr "vrh levo"
+
+#: views/admin/metabox.php:27
+msgid "Choose a position on the screen."
+msgstr "Izberi položaj na ekranu."
+
+#: views/admin/metabox.php:26
+msgid "Select a position"
+msgstr "Izberi položaj"
+
+#: views/admin/metabox.php:23
+msgid "Stick ad to a specific position on the screen"
+msgstr "Prilepi oglas na določen položaj na ekranu"
+
+#. translators: placement admin url
+#: views/admin/metabox.php:16
+msgid "These settings are deprecated. Sticky ads are now managed through <a href=\"%s\">placements</a>. Please convert your settings as soon as possible."
+msgstr "Te nastavitve so zastarele. Sticky ads se zdaj upravljajo skozi <a href=\"%s\">postavitve</a>. Prosim pretvori svoje nastavitve čim prej."
+
+#: views/admin/effects.php:39
+msgid "Duration of the effect (in milliseconds)."
+msgstr "Trajanje učinka (v milisekundah)."
+
+#: views/admin/effects.php:34
+msgid "Type of effect when the ad is being displayed"
+msgstr "Vrsta učinka, ko je oglas prikazan"
+
+#: views/admin/effects.php:30
+msgid "Slide in"
+msgstr "Podrsaj noter (Slide in)"
+
+#: views/admin/effects.php:26
+msgid "Fade in"
+msgstr "Zbledi noter (Fade in)"
+
+#: views/admin/effects.php:22
+msgid "Show"
+msgstr "Pokaži"
+
+#: views/admin/close-button.php:67
+msgid "days, 0 = after current session"
+msgstr "dni, 0 = po trenutni seji"
+
+#: views/admin/close-button.php:63
+msgid "close the ad for …"
+msgstr "zapri oglas za ..."
+
+#: views/admin/close-button.php:58
+msgid "enable timeout"
+msgstr "omogoči timeout"
+
+#: views/admin/close-button.php:51 views/admin/metabox.php:62
+msgid "right"
+msgstr "desno"
+
+#: views/admin/close-button.php:47 views/admin/metabox.php:60
+msgid "left"
+msgstr "levo"
+
+#: views/admin/close-button.php:42
+msgid "inside"
+msgstr "znotraj"
+
+#: views/admin/close-button.php:38
+msgid "outside"
+msgstr "zunaj"
+
+#: views/admin/close-button.php:29
+msgid "add close button"
+msgstr "dodaj gumb za zapiranje"
+
+#: includes/class-wrappers.php:690
+msgid "close"
+msgstr "zapri"
+
+#: includes/admin/class-placement-settings.php:157
+msgid "parent element"
+msgstr "starševski element"
+
+#: includes/admin/class-placement-settings.php:150
+msgid "Use <a href=\"https://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery selectors</a> to select a custom parent element or if automatic wrapper detection doesn’t work, e.g. #container_id, .container_class"
+msgstr "Uporabi <a href=\"https://api.jquery.com/category/selectors/\" target=\"_blank\">jQuery selectors</a>, da izbereš starševski element po meri, ali če avtomatsko zaznavanje ovoja ne deluje, npr. #container_id, .container_class"
+
+#: includes/admin/class-placement-settings.php:147
+msgid "select position"
+msgstr "izberi položaj"
+
+#: views/admin/close-button.php:34 views/admin/vertical-center.php:29
+msgid "Position"
+msgstr "Položaj"
+
+#: views/admin/vertical-center.php:18
+msgid "fix to window position"
+msgstr "fiksiraj na položaj okna"
+
+#: views/admin/size.php:42
+msgid "size"
+msgstr "velikost"
+
+#: views/admin/close-button.php:76
+msgid "close button"
+msgstr "gumb za zapiranje"
+
+#: views/admin/effects.php:46
+msgid "effect"
+msgstr "učinek"
+
+#: views/admin/trigger.php:51
+msgid "show the ad"
+msgstr "pokaži oglas"
+
+#: includes/admin/class-placement-settings.php:124
+msgid "background"
+msgstr "ozadje"
+
+#: includes/admin/class-placement-settings.php:118
+msgid "When selecting a background color, the sticky bar will cover the whole screen width."
+msgstr "Pri izbiri barve za ozadje bo lepljiva vrstica (sticky bar) zapolnila širino celega ekrana."
+
+#: includes/types/class-sticky-right-window.php:56
+msgid "Bar on the right side of the window."
+msgstr "Vrstica na desni strani okna."
+
+#: includes/types/class-sticky-right-window.php:47
+msgid "Right Bar"
+msgstr "Desna vrstica"
+
+#: includes/types/class-sticky-left-window.php:56
+msgid "Bar on the left side of the window."
+msgstr "Vrstica na levi strani okna."
+
+#: includes/types/class-sticky-left-window.php:47
+msgid "Left Bar"
+msgstr "Leva vrstica"
+
+#: includes/types/class-sticky-right-sidebar.php:56
+msgid "Sidebar on the right side of the content wrapper."
+msgstr "Stranska vrstica na desni strani ovoja vsebine."
+
+#: includes/types/class-sticky-right-sidebar.php:47
+msgid "Right Sidebar"
+msgstr "Desna stranska vrstica"
+
+#: includes/types/class-sticky-left-sidebar.php:56
+msgid "Sidebar on the left side of the content wrapper."
+msgstr "Stranska vrstica na levi strani ovoja vsebine."
+
+#: includes/types/class-sticky-left-sidebar.php:47
+msgid "Left Sidebar"
+msgstr "Leva stranska vrstica"
+
+#: includes/types/class-sticky-footer.php:56
+msgid "Fixed footer bar."
+msgstr "Vrstica, fiksirana v nogo."
+
+#: includes/types/class-sticky-footer.php:47
+msgid "Footer Bar"
+msgstr "Vrstica v nogi"
+
+#: includes/types/class-sticky-header.php:56
+msgid "Fixed header bar."
+msgstr "Vrstica, fiksirana v glavo."
+
+#: includes/types/class-sticky-header.php:47
+msgid "Header Bar"
+msgstr "Vrstica v glavi"
+
+#: views/admin/settings/general/activate-sticky-ads.php:15
+msgid "Activate this if you experience problems with sticky ads and/or a lot of your visitors use old mobile devices. It will check browser capability and position the ad inline after scrolling. Technically speaking: removes <em>position: fixed</em>, if not supported."
+msgstr "Aktiviraj to, če zaznaš težave z lepljivimi (sticky) oglasi in/ali dosti tvojih obiskovalcev uporablja stare mobilne naprave. To bo preverilo kompatibilnost z brskalnikom in postavilo oglas znotraj vrstice po premiku (scrolling). Tehnično: ostrani <em>position: fixed</em>, če ta ni podprt."
+
+#: includes/admin/class-settings.php:94
+msgid "Settings for the Sticky Ads add-on"
+msgstr "Nastavitve za dodatek Sticky Ads"
+
+#: includes/admin/class-settings.php:60
+msgid "Check browser capability"
+msgstr "Preveri kompatibilnost brskalnika"

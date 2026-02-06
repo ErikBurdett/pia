@@ -1,0 +1,61 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.cursor/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env/secrets
+.env
+.env.*
+*.local
+ssh-*.txt
+**/secrets/**
+**/private/**
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Node/PHP dependencies
+node_modules/
+vendor/
+
+# WordPress core config and runtime
+pia-staging-wp/wp-config.php
+pia-staging-wp/wp-config-*.php
+pia-staging-wp/.htaccess
+pia-staging-wp/wp-content/debug.log
+pia-staging-wp/wp-content/*.log
+
+# WordPress generated content
+pia-staging-wp/wp-content/uploads/
+pia-staging-wp/wp-content/cache/
+pia-staging-wp/wp-content/upgrade/
+pia-staging-wp/wp-content/ai1wm-backups/
+pia-staging-wp/wp-content/backups*/
+pia-staging-wp/wp-content/wflogs/
+pia-staging-wp/wp-content/wordfence/
+pia-staging-wp/wp-content/backup-*
+pia-staging-wp/wp-content/languages/
+
+# WordPress build outputs
+pia-staging-wp/wp-content/mu-plugins/**/vendor/
+pia-staging-wp/wp-content/plugins/**/vendor/
+pia-staging-wp/wp-content/themes/**/node_modules/
+pia-staging-wp/wp-content/plugins/**/node_modules/
+pia-staging-wp/wp-content/themes/**/dist/
+pia-staging-wp/wp-content/plugins/**/dist/
+pia-staging-wp/wp-content/themes/**/.cache/
+pia-staging-wp/wp-content/plugins/**/.cache/

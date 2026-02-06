@@ -1,0 +1,262 @@
+/**
+ PLACEMENT TESTS PAGE
+*/
+/* stylelint-disable */
+.advads-placement-tests-table {
+	min-width: 80%;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-collapse: collapse;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.advads-placement-tests-table tbody tr {
+	border-top: 1px solid #f1f1f1;
+}
+
+.advads-placement-tests-table th,
+.advads-placement-tests-table td {
+	margin: 0;
+	padding: 10px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.advads-placement-tests-table tbody tr td:first-child {
+	width: 70px;
+}
+
+.advads-placement-tests-table tbody tr td:nth-child(2) {
+	width: 225px;
+}
+
+.advads-placement-tests-table tbody tr td:last-child {
+	width: 70px;
+}
+
+.advads-placements-table-test-column {
+	width: 150px;
+}
+
+.advads-placements-table-options
+	.advads-option-placement-custom-position
+	fieldset {
+	margin-left: 2em;
+	margin-bottom: 1em;
+}
+
+.advads-placements-table-options
+	.advads-option-placement-custom-position
+	fieldset
+	legend {
+	margin-left: -2em;
+	font-weight: bold;
+}
+
+/**
+ PLACEMENT VISITOR AND DISPLAY CONDITIONS
+ */
+.advads-placements-table .advads-conditions-table tbody tr td {
+	width: auto;
+}
+
+/**
+ AD GROUPD PAGE
+*/
+.advads-option-group-pro-grid-size > div {
+	line-height: 28px;
+}
+
+/**
+ AD EDIT PAGE
+*/
+#advads-pro-weekdays {
+	margin-top: 5px;
+	font-size: 12px;
+}
+
+#advads-pro-weekdays option {
+	padding-bottom: 1px;
+}
+
+#advads-custom-code-wrap {
+	float: none;
+	overflow: auto;
+}
+
+#advads-custom-code-textarea {
+	width: 100%;
+	height: 10em;
+}
+
+#modal-category-hierarchy .preloader {
+	text-align: center;
+}
+
+#modal-category-hierarchy .preloader img {
+	width: 28px;
+	height: 28px;
+}
+
+#modal-category-hierarchy .level-header {
+	display: inline-block;
+	margin: 0.5em 0.5em 0 0;
+}
+
+#modal-category-hierarchy .level-header .dashicons {
+	color: #7a7a79;
+	cursor: pointer;
+}
+
+#modal-category-hierarchy .level-header .dashicons.not-parent {
+	visibility: hidden;
+	cursor: default;
+}
+
+#modal-category-hierarchy .category-level .category-level {
+	margin-left: 2em;
+	padding-left: 1.5em;
+	border-left: 1px dashed #9b9b9b;
+}
+
+.rtl #modal-category-hierarchy .category-level .category-level {
+	margin-right: 2em;
+	margin-left: 0;
+	padding-right: 1.5em;
+	padding-left: 0;
+	border-right: 1px dashed #9b9b9b;
+	border-left: none;
+}
+
+#modal-category-hierarchy .category-level .category-level.folded {
+	height: 0;
+	overflow: hidden;
+}
+
+#modal-category-hierarchy .advads-category.advads-button[data-status="active"] {
+	border-color: #0074a2 !important;
+	background: #2ea2cc !important;
+	color: #fff !important;
+	box-shadow: none;
+	border-width: 1px;
+}
+
+#modal-category-hierarchy .advads-category.advads-button[data-status="mixed"] {
+	background: #fff;
+}
+
+#modal-category-hierarchy .advads-category.advads-button span:after {
+	content: "";
+	border: none;
+	width: 0;
+}
+
+#modal-category-hierarchy .advads-category.advads-button span:before {
+	font-family: "dashicons";
+	padding: 0;
+	width: 28px;
+	display: inline-block;
+	border-right: 1px solid #ccc;
+	margin-right: 1em;
+	height: 28px;
+	line-height: 30px;
+	text-align: center;
+	color: #ccc;
+	margin-left: -1em;
+}
+
+.rtl #modal-category-hierarchy .advads-category.advads-button span:before {
+	border-left: 1px solid #ccc;
+	border-right: none;
+	margin-left: 1em;
+	margin-right: 0;
+}
+
+#modal-category-hierarchy .advads-category.advads-button span:before {
+	content: "\f159";
+}
+
+#modal-category-hierarchy .advads-category.advads-button:hover span:before,
+#modal-category-hierarchy
+	.advads-category.advads-button[data-status="mixed"]:hover
+	span:before {
+	content: "\f12a";
+}
+
+#modal-category-hierarchy
+	.advads-category.advads-button[data-status="active"]
+	span:before {
+	content: "\f12a";
+	color: white;
+	border-color: #0074a2;
+}
+
+#modal-category-hierarchy
+	.advads-category.advads-button[data-status="mixed"]
+	span:before {
+	content: "\f14f";
+	color: #2ea2cc;
+	border-color: #0074a2;
+}
+
+#modal-category-hierarchy
+	.advads-category.advads-button[data-status="active"]:hover
+	span:before {
+	content: "\f159";
+}
+
+/**
+ MODULE ACTIVATION
+ */
+.advads-sub-settings {
+	display: none;
+}
+
+input.advads-has-sub-settings:checked ~ .advads-sub-settings {
+	display: block;
+}
+
+#advads-settings-hide-by-post-type {
+	-webkit-columns: 200px 5;
+	-moz-columns: 200px 5;
+	columns: 200px 5;
+	column-gap: 10px;
+}
+
+#advads-settings-hide-by-post-type label {
+	display: block;
+}
+
+.advads-color-green {
+	color: green;
+}
+.advads-color-red {
+	color: red;
+}
+
+.advads-settings-margin {
+	margin: 1.33em 0;
+}
+.d-block {
+	display: block;
+}
+.advads-eadblocker-radio-button {
+	margin-bottom: 5px;
+	margin-right: 1.5em;
+}
+.width-100 {
+	width: 100%;
+}
+.advads-eab-overlay-notice {
+	display: none;
+}
+.advads-settings-checkbox-inline {
+	-webkit-columns: 200px 5;
+	-moz-columns: 200px 5;
+	columns: 200px 5;
+	column-gap: 10px;
+}
+.advads-settings-checkbox-inline label {
+	display: block;
+	margin-bottom: 9px;
+}

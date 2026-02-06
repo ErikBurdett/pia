@@ -1,0 +1,9 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+
+#bulk-edit {
+	.title {
+		@apply mr-3 w-auto min-w-[5.25em];
+	}
+}

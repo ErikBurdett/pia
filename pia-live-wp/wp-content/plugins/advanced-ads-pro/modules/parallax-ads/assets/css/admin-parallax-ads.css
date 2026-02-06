@@ -1,0 +1,20 @@
+.advads-option-placement-parallax-height {
+	clear: both;
+	overflow: hidden;
+}
+
+.advads-option-placement-parallax-height label {
+	float: left;
+}
+
+.advads-option-placement-parallax h4 {
+	margin-bottom: 0;
+}
+
+.advads-option-placement-parallax-enabled ~ div {
+	display: none;
+}
+
+.advads-option-placement-parallax-enabled:checked ~ div {
+	display: block;
+}

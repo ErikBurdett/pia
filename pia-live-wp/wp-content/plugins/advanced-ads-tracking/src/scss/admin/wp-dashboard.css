@@ -1,0 +1,28 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+
+.advads-performing-tabs {
+	@apply hidden;
+
+	&.active {
+		@apply block;
+	}
+}
+
+.advads-performing-table {
+	@apply table w-full mt-4;
+	border-spacing: 1px;
+
+	&-row {
+		@apply table-row;
+	}
+
+	&-cell {
+		@apply table-cell whitespace-nowrap overflow-hidden overflow-ellipsis max-w-72 text-black;
+
+		&:first-child {
+			@apply min-w-6;
+		}
+	}
+}

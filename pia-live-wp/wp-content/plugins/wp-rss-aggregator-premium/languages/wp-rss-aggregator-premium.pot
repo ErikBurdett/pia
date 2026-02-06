@@ -1,0 +1,327 @@
+# Copyright (C) 2026 RebelCode
+# This file is distributed under the GPL-3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP RSS Aggregator - Premium 5.0.11\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-rss-aggregator-premium\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-01-14T09:58:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: wp-rss-aggregator-premium\n"
+
+#. Plugin Name of the plugin
+#: wp-rss-aggregator-premium.php
+msgid "WP RSS Aggregator - Premium"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: wp-rss-aggregator-premium.php
+msgid "https://wprssaggregator.com"
+msgstr ""
+
+#. Description of the plugin
+#: wp-rss-aggregator-premium.php
+msgid "The premium upgrade for WP RSS Aggregator."
+msgstr ""
+
+#. Author of the plugin
+#: wp-rss-aggregator-premium.php
+msgid "RebelCode"
+msgstr ""
+
+#. Author URI of the plugin
+#: wp-rss-aggregator-premium.php
+msgid "https://rebelcode.com"
+msgstr ""
+
+#: basic/modules/automations.php:44
+#: basic/modules/displayFilters.php:22
+#: plus/modules/taxonomies.php:19
+msgid "Title"
+msgstr ""
+
+#: basic/modules/automations.php:48
+#: basic/modules/displayFilters.php:26
+#: basic/src/Cli/CurationCommand.php:62
+#: plus/modules/taxonomies.php:23
+msgid "Content"
+msgstr ""
+
+#: basic/modules/automations.php:52
+msgid "Title and Content"
+msgstr ""
+
+#: basic/modules/automations.php:57
+msgid "Tags/Categories"
+msgstr ""
+
+#: basic/modules/automations.php:69
+msgctxt "Condition operator"
+msgid "Contain any"
+msgstr ""
+
+#: basic/modules/automations.php:71
+#: basic/modules/conditions.php:16
+#: basic/modules/displayFilters.php:42
+msgid "Type a value..."
+msgstr ""
+
+#: basic/modules/automations.php:88
+msgid "Import item"
+msgstr ""
+
+#: basic/modules/automations.php:93
+msgid "Do not import"
+msgstr ""
+
+#: basic/modules/automations.php:106
+msgctxt "Condition operator"
+msgid "Contain none"
+msgstr ""
+
+#: basic/modules/conditions.php:15
+msgctxt "Condition operator"
+msgid "Is"
+msgstr ""
+
+#: basic/modules/conditions.php:23
+msgctxt "Condition operator"
+msgid "Contains all"
+msgstr ""
+
+#: basic/modules/conditions.php:25
+#: basic/modules/conditions.php:43
+msgid "Type a keyword..."
+msgstr ""
+
+#: basic/modules/conditions.php:26
+#: basic/modules/conditions.php:44
+msgid "Match case"
+msgstr ""
+
+#: basic/modules/conditions.php:27
+#: basic/modules/conditions.php:45
+#: basic/modules/displayFilters.php:43
+msgid "Whole words"
+msgstr ""
+
+#: basic/modules/conditions.php:41
+msgctxt "Condition operator"
+msgid "Contains any"
+msgstr ""
+
+#: basic/modules/conditions.php:62
+msgid "Is not"
+msgstr ""
+
+#: basic/modules/conditions.php:64
+msgid "Does not contain all"
+msgstr ""
+
+#: basic/modules/conditions.php:66
+msgid "Does not contain any"
+msgstr ""
+
+#: basic/modules/displayFilters.php:30
+msgid "Title and content"
+msgstr ""
+
+#: basic/modules/displayFilters.php:40
+msgctxt "Condition operator"
+msgid "Contains"
+msgstr ""
+
+#: basic/src/Cli/CurationCommand.php:48
+#, php-format
+msgid "\"%s\" is not a valid post ID."
+msgstr ""
+
+#: basic/src/Cli/CurationCommand.php:59
+msgid "By:"
+msgstr ""
+
+#: basic/src/Cli/CurationCommand.php:60
+msgid "Published:"
+msgstr ""
+
+#: basic/src/Cli/CurationCommand.php:61
+msgid "Modified:"
+msgstr ""
+
+#: basic/src/Cli/CurationCommand.php:257
+msgid "There are no posts to curate."
+msgstr ""
+
+#: basic/src/Cli/FolderCommand.php:53
+msgid "No folders to add."
+msgstr ""
+
+#: basic/src/Cli/FolderCommand.php:65
+#, php-format
+msgid "%d source added."
+msgid_plural "%d sources added."
+msgstr[0] ""
+msgstr[1] ""
+
+#: basic/src/Cli/FolderCommand.php:85
+msgid "No folder name specified."
+msgstr ""
+
+#: basic/src/Cli/FolderCommand.php:185
+#, php-format
+msgid "%s folder updated."
+msgid_plural "%s sources updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: basic/src/Cli/FolderCommand.php:225
+#, php-format
+msgid "Removed %1$d source from \"%2$s\"."
+msgid_plural "Removed %1$d sources from \"%2$s\"."
+msgstr[0] ""
+msgstr[1] ""
+
+#: basic/src/Cli/FolderCommand.php:254
+msgid "No folders to delete."
+msgstr ""
+
+#: basic/src/Cli/FolderCommand.php:266
+#, php-format
+msgid "Deleted %d folder."
+msgid_plural "Deleted %d folders."
+msgstr[0] ""
+msgstr[1] ""
+
+#: basic/src/Curator.php:81
+#, php-format
+msgctxt "The recorded note when a pending post is rejected. %s = post title"
+msgid "(Rejected curation) %s"
+msgstr ""
+
+#: basic/src/Curator/IrPostsStore.php:86
+msgid "Cannot replace IR post with no ID"
+msgstr ""
+
+#: basic/src/Curator/IrPostsStore.php:206
+#, php-format
+msgid "IR post with ID %d not found"
+msgstr ""
+
+#: basic/src/FoldersStore.php:63
+#, php-format
+msgid "Folder #%d [Missing]"
+msgstr ""
+
+#: basic/src/FoldersStore.php:191
+msgid "A folder with this name already exists. Choose another name."
+msgstr ""
+
+#: basic/src/V4Migration/V4LayoutMigrator.php:42
+msgid "Read more"
+msgstr ""
+
+#: basic/src/V4Migration/V4LayoutMigrator.php:157
+msgid "read more"
+msgstr ""
+
+#: elite/src/WordAi/WaiClient.php:173
+#, php-format
+msgid "Your WordAi email or API key might be incorrect (Status code %s)"
+msgstr ""
+
+#: elite/src/WordAi/WaiClient.php:184
+#, php-format
+msgid "Status code: %d"
+msgstr ""
+
+#: elite/src/WordAi/WaiClient.php:200
+#, php-format
+msgid "The API returned a malformed JSON response: (%1$s) %2$s"
+msgstr ""
+
+#: plus/modules/templates.php:19
+msgid "Text"
+msgstr ""
+
+#: plus/modules/templates.php:25
+msgid "Source name"
+msgstr ""
+
+#: plus/modules/templates.php:31
+msgid "Source URL"
+msgstr ""
+
+#: plus/modules/templates.php:37
+msgid "Post title"
+msgstr ""
+
+#: plus/modules/templates.php:43
+msgid "Post URL"
+msgstr ""
+
+#: plus/modules/templates.php:52
+msgid "Original Post URL"
+msgstr ""
+
+#: plus/modules/templates.php:58
+msgid "Post date"
+msgstr ""
+
+#: plus/modules/templates.php:66
+msgid "Import date"
+msgstr ""
+
+#: plus/modules/templates.php:78
+msgid "Author name"
+msgstr ""
+
+#: plus/modules/templates.php:88
+msgid "Author URL"
+msgstr ""
+
+#: plus/modules/templates.php:98
+msgid "Featured image URL"
+msgstr ""
+
+#: plus/modules/templates.php:104
+msgid "Post meta"
+msgstr ""
+
+#: pro/src/FullTextClient.php:82
+#, php-format
+msgid "The fetched full text content is shorter (%1$d characters) than the RSS feed content (%2$d characters) for post: %3$s"
+msgstr ""
+
+#: pro/src/FullTextClient.php:117
+msgid "A valid Pro license is required to use the full text feature"
+msgstr ""
+
+#: pro/src/Source/ContentCleaner.php:149
+#, php-format
+msgid "Failed to remove unwanted content: %s"
+msgstr ""
+
+#: wp-rss-aggregator-premium.php:92
+msgid "Plugin Version Mismatch"
+msgstr ""
+
+#. translators: %1$s: Plugins page url %2$s: Learn more url
+#: wp-rss-aggregator-premium.php:95
+#, php-format
+msgid "Your free and premium Aggregator plugins are running different versions, so Premium features are temporarily paused. <a href=\"%1$s\">Please update</a> both plugins to the same version to restore full compatibility. <a target=\"_blank\" href=\"%2$s\">Learn more</a>"
+msgstr ""
+
+#: wp-rss-aggregator-premium.php:186
+msgid "Unlock Your Aggregator Premium Plan"
+msgstr ""
+
+#. translators: %1$s: Manage plan page url
+#: wp-rss-aggregator-premium.php:189
+#, php-format
+msgid "<a href=\"%1$s\">Activate your license</a> to access your new premium features."
+msgstr ""

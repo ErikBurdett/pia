@@ -1,0 +1,152 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+
+body {
+	@apply m-0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+	@apply font-bold;
+}
+
+input,
+textarea,
+select {
+	@apply p-1;
+}
+
+/* buttons from admin css */
+
+.button-primary {
+	@apply text-white no-underline;
+	background: #00a0d2;
+	border-color: #0073aa;
+	box-shadow:
+		inset 0 1px 0 rgba(120, 200, 230, 0.5),
+		0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.button {
+	@apply inline-block no-underline h-7 m-0 cursor-pointer border border-solid appearance-none rounded box-border whitespace-nowrap;
+
+	font-size: 13px;
+	line-height: 26px;
+	padding: 0 10px 1px;
+}
+
+/* Page header */
+
+#stats-head {
+	@apply fixed w-full h-[100px] top-0 bg-white border-b border-solid border-b-white text-center;
+
+	padding: 10px;
+	z-index: 1000;
+
+	h1 {
+		@apply inline m-0 text-2xl;
+	}
+}
+
+#ad-title {
+	@apply inline m-0 text-xl;
+}
+
+#stats-period {
+	margin: 10px 25px;
+}
+
+#stats-content {
+	margin-top: 150px;
+}
+
+#public-stat-table {
+	border-collapse: collapse;
+	width: 600px;
+	margin: auto;
+}
+
+#public-stat-table td,
+#public-stat-table th {
+	text-align: right;
+	padding: 0.5em;
+	border: 1px solid #999;
+}
+
+#public-stat-table th {
+	@apply text-center font-bold;
+
+	background-color: #f0f0f0;
+}
+
+#public-stat-table tr:nth-child(odd) {
+	background-color: #eef;
+}
+
+#public-stat-graph {
+	@apply mx-auto;
+	width: 92%;
+}
+
+#public-stat-graph .jqplot-y2axis-label,
+#public-stat-graph .jqplot-yaxis-label {
+	@apply text-center p-1;
+	border: 1px solid #e0e0e0;
+	background-color: #f0f0f0;
+}
+
+#public-stat-graph .jqplot-y2axis-label {
+	right: -2em !important;
+}
+
+#public-stat-graph .jqplot-yaxis-label {
+	left: -2em !important;
+}
+
+#graph-legend {
+	margin: 2em auto;
+	text-align: center;
+	width: 300px;
+	background-color: #fffdf6;
+	border: 1px solid #eeeae0;
+}
+
+#graph-legend .legend-item {
+	display: inline-block;
+	padding: 0.3em;
+	margin: 0.2em;
+}
+
+#impr-legend,
+#click-legend {
+	width: 30px;
+	height: 0.25em;
+	border-top: 3px solid #1b183a;
+	display: inline-block;
+}
+
+#click-legend {
+	border-top-color: #0474a2;
+}
+
+.advads-stats-link {
+	font-size: 0.9em;
+	text-align: center;
+}
+
+#period-form {
+	display: inline-block;
+}
+
+.hidden {
+	display: none;
+}
+
+#image-ad-preview {
+	text-align: center;
+}
+
+#image-ad-preview img {
+	display: inline-block;
+}

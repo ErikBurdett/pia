@@ -1,0 +1,29 @@
+.advads-ga-uid {
+	display: none;
+}
+
+.advads-ga-uid.advads-is-visible {
+	display: table-row;
+}
+
+.advads-ga-uid input {
+	min-width: 250px;
+}
+
+.advads-amp-warning {
+	display: none;
+}
+
+.advads-amp-warning.advads-amp-nossl[data-method="frontend"] {
+	display: block;
+}
+
+#advads-settings-track-by-user-role {
+	columns: 200px 5;
+	column-gap: 10px;
+}
+
+#advads-settings-track-by-user-role label {
+	display: block;
+}
+
