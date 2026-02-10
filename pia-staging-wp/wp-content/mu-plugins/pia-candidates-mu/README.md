@@ -16,12 +16,48 @@ Per-site candidate profiles for the PIA WordPress multisite. This MU plugin regi
 - Place this folder at: `wp-content/mu-plugins/pia-candidates-mu/`
 - Ensure the loader file exists at: `wp-content/mu-plugins/pia-candidates-mu-loader.php`
 
+## Deploy to Kinsta Staging (SCP)
+
+This is an MU plugin, so once the files are on the server it will auto-load (no “Activate” button).
+
+### 1) Copy the MU plugin files via `scp`
+
+From your local repo root (the folder that contains `pia-staging-wp/`), run:
+
+```bash
+# Copy the loader file (must live directly in mu-plugins/)
+scp -P 21268 \
+  "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu-loader.php" \
+  texasmssite@34.174.186.154:"/path/to/wordpress/public/wp-content/mu-plugins/"
+
+# Copy the MU plugin folder (contains pia-candidates-mu.php, templates/, data/, README.md)
+scp -P 21268 -r \
+  "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu" \
+  texasmssite@34.174.186.154:"/path/to/wordpress/public/wp-content/mu-plugins/"
+```
+
+Notes:
+- Replace `"/path/to/wordpress/public/"` with your actual Kinsta WordPress docroot for the staging environment (it’s commonly a `.../public/` directory).
+- If your `data/*.json` is large and you only want code changes, you can omit the `data/` folder copy — but then set the import source to URL or Inline JSON.
+
+### 2) (Optional) Verify on the server
+
+SSH in and confirm the files exist:
+
+```bash
+ssh texasmssite@34.174.186.154 -p 21268
+# then check:
+# wp-content/mu-plugins/pia-candidates-mu-loader.php
+# wp-content/mu-plugins/pia-candidates-mu/pia-candidates-mu.php
+```
+
 ## Admin settings
 
 Go to **Settings → PIA Candidates**:
 
 - **Data Source Type**: choose Custom JSON, FEC API, or Texas SOS import.
 - **Data Source URL**: JSON feed URL for national/state/county candidate data.
+- **Local JSON File (MU plugin)**: store a JSON file inside the MU plugin folder and reference it by path (relative to `pia-candidates-mu/`). Default/recommended: `data/texas_candidates_2026-0.json`.
 - **Inline JSON**: paste JSON data directly in the admin.
 - **FEC API Key / Cycle / Offices**: pulls federal candidates (US House, US Senate, President) for Texas.
 - **Texas SOS URL**: provide a JSON or CSV export link from the Texas Secretary of State.
@@ -29,6 +65,35 @@ Go to **Settings → PIA Candidates**:
 - **PIA Approved Badge Image**: upload or paste a badge URL to overlay on approved candidates.
 
 Use **Run Import** to populate candidates. Existing manual candidates are preserved; imports update records that match the **External ID**.
+
+## Multisite setup checklist (after files are deployed)
+
+### Network Admin (once)
+
+- **Permalinks**: Visit **Network Admin → Sites → (Edit a site) → Dashboard → Settings → Permalinks** and click **Save Changes** once (or do this per-site) to ensure the `candidates` CPT rewrite rules are registered.
+  - If permalinks are disabled / using plain URLs, the directory shortcode will still work but pretty permalinks for candidate profiles may not.
+- **Theme templates (optional)**: If your theme provides `single-pia_candidate.php`, it will override the plugin’s built-in template.
+
+### Each county site (repeat per site)
+
+This plugin stores candidates and settings **per site**, so you must configure/import per county site.
+
+- **Configure defaults**: Go to **Settings → PIA Candidates**:
+  - Set **Default State / County / District** as appropriate for the county site.
+  - Choose your **Data Source Type** (Custom JSON / FEC / Texas SOS).
+  - If using the bundled JSON file, confirm **Local JSON File (MU plugin)** points to something like `data/texas_candidates_2026-0.json`.
+- **Run Import**: Click **Run Import** (this updates existing candidates by `external_id` and adds new ones).
+- **Create/Update the directory page**: Add the directory shortcode to a page (Avada Builder works fine). Recommended for realtime filtering:
+
+```
+[pia_candidate_directory per_page="all" scope="county"]
+```
+
+- **Test candidate profiles**:
+  - Visit a candidate single page (or click “Candidate Profile” from the directory).
+  - Confirm portrait image displays:
+    - If you set a **Portrait Image** in the editor (media picker), that is used.
+    - If you paste a **Portrait URL**, it will be used (and will override/clear any previous portrait ID).
 
 ## Shortcodes (Avada Builder)
 
@@ -41,11 +106,38 @@ Use these in Avada Builder content blocks.
 ```
 
 **Attributes**
-- `per_page` (number) — candidates per page.
-- `state`, `county`, `district` — optional filters (default to the site settings).
+- `per_page` (number | `all`) — candidates per page. Use `all` (or `-1`) to load every candidate on the site (recommended when using the realtime search/filters).
+- `scope` — controls how location filtering works:
+  - `auto` (default): use the site defaults (`Default State/County/District`) if set.
+  - `county`: force county-only (uses `Default County` if you don’t pass `county`).
+  - `state`: statewide (ignores `Default County` unless you explicitly pass `county`).
+  - `all`: ignore site defaults; show all candidates on the site (unless you explicitly pass filters).
+- `state`, `county`, `district` — optional filters (default to the site settings unless `scope="all"` or `scope="state"`).
 - `featured` — `1` to show featured only.
 - `approved` — `1` to show PIA Approved only.
 - `category` — optional candidate category filter (comma-separated slugs).
+- `search` — `1` (default) shows the realtime search box; `0` hides it.
+- `filters` — `1` (default) shows the realtime filter dropdowns; `0` hides them.
+
+**Examples**
+
+```
+[pia_candidate_directory per_page="30" scope="county"]
+```
+
+Load *all* candidates for realtime filtering:
+
+```
+[pia_candidate_directory per_page="all" scope="county"]
+```
+
+```
+[pia_candidate_directory per_page="30" scope="state"]
+```
+
+```
+[pia_candidate_directory per_page="30" scope="all"]
+```
 
 ### Profile
 
@@ -61,6 +153,10 @@ Use these in Avada Builder content blocks.
 ```
 
 ## JSON schema (example)
+
+The importer accepts either a **flat list** or a **grouped object** (it will auto-flatten groups like `federal`, `state`, etc.).
+
+### Flat list
 
 ```
 [
@@ -87,6 +183,19 @@ Use these in Avada Builder content blocks.
 ]
 ```
 
+### Grouped object (auto-flattened)
+
+```
+{
+  "federal": [
+    { "external_id": "tx-2026-senate-001", "name": "Example Candidate", "office": "U.S. Senate", "state": "Texas" }
+  ],
+  "state": [
+    { "external_id": "tx-2026-state-001", "name": "Example Candidate 2", "office": "Texas State Senate", "state": "Texas" }
+  ]
+}
+```
+
 ## Notes
 
 - Imports are additive and will **not delete** manual candidates. If an API/URL fails, the import exits with a notice and existing candidates remain unchanged.
@@ -100,4 +209,4 @@ Use these in Avada Builder content blocks.
 
 ## Generating JSON locally
 
-See `scripts/candidates/README.md` for Python scripts that fetch and normalize FEC and Texas SOS data into the plugin’s JSON format.
+See `candidates-data/README.md` for Python scripts that fetch and normalize FEC and Texas SOS data into the plugin’s JSON format.
