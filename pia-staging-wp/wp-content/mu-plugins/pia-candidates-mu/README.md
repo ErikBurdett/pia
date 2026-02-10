@@ -20,6 +20,15 @@ Per-site candidate profiles for the PIA WordPress multisite. This MU plugin regi
 
 This is an MU plugin, so once the files are on the server it will auto-load (no “Activate” button).
 
+### Critical safety note (prevents site-wide crashes)
+
+Because MU plugins auto-load, a PHP syntax error will take down the entire network. The safest workflow is:
+
+- Upload to a **temporary path/name**
+- **Validate** (or at least ensure the file sizes/timestamps look right)
+- Then **atomically rename/move** into place
+- Keep a quick rollback by renaming the loader file
+
 ### 1) Copy the MU plugin files via `scp`
 
 From your local repo root (the folder that contains `pia-staging-wp/`), run:
@@ -34,6 +43,37 @@ scp -P 21268 \
 scp -P 21268 -r \
   "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu" \
   texasmssite@34.174.186.154:"/path/to/wordpress/public/wp-content/mu-plugins/"
+```
+
+### Safer “atomic” deploy (recommended)
+
+```bash
+# Upload to temporary names first
+scp -P 21268 \
+  "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu-loader.php" \
+  texasmssite@34.174.186.154:"/path/to/wordpress/public/wp-content/mu-plugins/pia-candidates-mu-loader.php.new"
+
+scp -P 21268 -r \
+  "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu" \
+  texasmssite@34.174.186.154:"/path/to/wordpress/public/wp-content/mu-plugins/pia-candidates-mu.new"
+
+# SSH in and move into place (atomic-ish rename)
+ssh texasmssite@34.174.186.154 -p 21268
+cd "/path/to/wordpress/public/wp-content/mu-plugins/"
+mv "pia-candidates-mu" "pia-candidates-mu.bak.$(date +%Y%m%d%H%M%S)" 2>/dev/null || true
+mv "pia-candidates-mu.new" "pia-candidates-mu"
+mv "pia-candidates-mu-loader.php" "pia-candidates-mu-loader.php.bak.$(date +%Y%m%d%H%M%S)" 2>/dev/null || true
+mv "pia-candidates-mu-loader.php.new" "pia-candidates-mu-loader.php"
+```
+
+### Emergency rollback (if the site errors after deploy)
+
+MU plugins can’t be disabled in wp-admin. Roll back by renaming the loader (this stops loading the MU plugin):
+
+```bash
+ssh texasmssite@34.174.186.154 -p 21268
+cd "/path/to/wordpress/public/wp-content/mu-plugins/"
+mv "pia-candidates-mu-loader.php" "pia-candidates-mu-loader.php.disabled"
 ```
 
 Notes:
@@ -63,6 +103,7 @@ Go to **Settings → PIA Candidates**:
 - **Texas SOS URL**: provide a JSON or CSV export link from the Texas Secretary of State.
 - **Default State/County/District**: per-site defaults used by the directory shortcode.
 - **PIA Approved Badge Image**: upload or paste a badge URL to overlay on approved candidates.
+- **Fetch Ballotpedia Photos (on import)**: pulls the candidate photo from their Ballotpedia page (if available) and stores it as `portrait_url`. Ballotpedia placeholder images (like “Submit photo”) are ignored.
 
 Use **Run Import** to populate candidates. Existing manual candidates are preserved; imports update records that match the **External ID**.
 
@@ -118,6 +159,9 @@ Use these in Avada Builder content blocks.
 - `category` — optional candidate category filter (comma-separated slugs).
 - `search` — `1` (default) shows the realtime search box; `0` hides it.
 - `filters` — `1` (default) shows the realtime filter dropdowns; `0` hides them.
+
+**Troubleshooting**
+- If directory cards show the *page title* (e.g. “Candidates Directory”) instead of candidate names, make sure you’ve deployed plugin version `0.3.0` or newer.
 
 **Examples**
 
@@ -201,6 +245,7 @@ The importer accepts either a **flat list** or a **grouped object** (it will aut
 - Imports are additive and will **not delete** manual candidates. If an API/URL fails, the import exits with a notice and existing candidates remain unchanged.
 - If the active theme provides `single-pia_candidate.php`, it will take precedence.
 - The plugin template is used otherwise and simply renders the profile shortcode.
+- Ballotpedia links: for county-level Texas races, the importer will automatically expand simple Ballotpedia URLs like `https://ballotpedia.org/Candace_Hanson` into the more specific 2026 candidate page format like `https://ballotpedia.org/Candace_Hanson_(Gray_County_Clerk,_Texas,_candidate_2026)` on the next import (when the `external_id` follows `tx-2026-<county>-...`).
 
 ## Reference links for data sources
 

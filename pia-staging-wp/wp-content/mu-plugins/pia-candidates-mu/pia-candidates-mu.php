@@ -2,7 +2,7 @@
 /**
  * Plugin Name: PIA Candidates (MU)
  * Description: Per-site candidate profiles with directory and profile shortcodes for the PIA multisite.
- * Version: 0.3.0
+ * Version: 0.4.0
  * Author: PIA
  */
 
@@ -18,7 +18,7 @@ final class PIA_Candidates_MU {
     const SETTINGS_SLUG = 'pia-candidates-settings';
     const DEFAULT_FEC_CYCLE = 2024;
     const MISSING_TEXT = 'Information pending/not provided';
-    const ASSET_VERSION = '0.3.0';
+    const ASSET_VERSION = '0.4.0';
 
     public function __construct() {
         add_action('init', [$this, 'register_post_type']);
@@ -301,58 +301,61 @@ final class PIA_Candidates_MU {
 
         wp_enqueue_media();
         wp_enqueue_script('jquery');
+
+        // IMPORTANT: MU plugins must never fatal error. Use nowdoc for inline JS to avoid PHP string escaping issues.
         $badge_field = self::OPTION_NAME . '[badge_image_url]';
-        wp_add_inline_script(
-            'jquery',
-            "jQuery(function($){
-                var piaCandidatesBadgeField = " . wp_json_encode($badge_field) . ";
-                function openMediaPicker(targetInput, urlInput, previewTarget){
-                    var frame = wp.media({ title: 'Select Image', button: { text: 'Use this image' }, multiple: false });
-                    frame.on('select', function(){
-                        var attachment = frame.state().get('selection').first().toJSON();
-                        $(targetInput).val(attachment.id ? attachment.id : '');
-                        if (urlInput) {
-                            $(urlInput).val(attachment.url || '');
-                        }
-                        if (previewTarget) {
-                            var url = attachment.sizes && attachment.sizes.medium ? attachment.sizes.medium.url : attachment.url;
-                            $(previewTarget).html('<img src="' + url + '" style="max-width:200px;height:auto;" />');
-                        }
-                    });
-                    frame.open();
-                }
+        wp_add_inline_script('jquery', 'var piaCandidatesBadgeField = ' . wp_json_encode($badge_field) . ';', 'before');
 
-                $('#pia-candidate-portrait-select').on('click', function(e){
-                    e.preventDefault();
-                    openMediaPicker('#pia-candidate-portrait-id', '#pia-candidate-portrait-url', '#pia-candidate-portrait-preview');
-                });
+        $admin_js = <<<'JS'
+jQuery(function($){
+    function openMediaPicker(targetInput, urlInput, previewTarget){
+        var frame = wp.media({ title: 'Select Image', button: { text: 'Use this image' }, multiple: false });
+        frame.on('select', function(){
+            var attachment = frame.state().get('selection').first().toJSON();
+            $(targetInput).val(attachment.id ? attachment.id : '');
+            if (urlInput) {
+                $(urlInput).val(attachment.url || '');
+            }
+            if (previewTarget) {
+                var url = attachment.sizes && attachment.sizes.medium ? attachment.sizes.medium.url : attachment.url;
+                $(previewTarget).html('<img src="' + url + '" style="max-width:200px;height:auto;" />');
+            }
+        });
+        frame.open();
+    }
 
-                $('#pia-candidate-portrait-remove').on('click', function(){
-                    $('#pia-candidate-portrait-id').val('');
-                    $('#pia-candidate-portrait-url').val('');
-                    $('#pia-candidate-portrait-preview').html('');
-                });
+    $('#pia-candidate-portrait-select').on('click', function(e){
+        e.preventDefault();
+        openMediaPicker('#pia-candidate-portrait-id', '#pia-candidate-portrait-url', '#pia-candidate-portrait-preview');
+    });
 
-                // If the editor pastes an external URL, prefer it over a previously selected media ID.
-                $('#pia-candidate-portrait-url').on('change', function(){
-                    var url = ($(this).val() || '').toString().trim();
-                    if (url !== '') {
-                        $('#pia-candidate-portrait-id').val('');
-                    }
-                });
+    $('#pia-candidate-portrait-remove').on('click', function(){
+        $('#pia-candidate-portrait-id').val('');
+        $('#pia-candidate-portrait-url').val('');
+        $('#pia-candidate-portrait-preview').html('');
+    });
 
-                $('#pia-candidates-badge-select').on('click', function(e){
-                    e.preventDefault();
-                    openMediaPicker('#pia-candidates-badge-id', 'input[name="' + piaCandidatesBadgeField + '"]', '#pia-candidates-badge-preview');
-                });
+    // If the editor pastes an external URL, prefer it over a previously selected media ID.
+    $('#pia-candidate-portrait-url').on('change', function(){
+        var url = ($(this).val() || '').toString().trim();
+        if (url !== '') {
+            $('#pia-candidate-portrait-id').val('');
+        }
+    });
 
-                $('#pia-candidates-badge-remove').on('click', function(){
-                    $('#pia-candidates-badge-id').val('');
-                    $('input[name="' + piaCandidatesBadgeField + '"]').val('');
-                    $('#pia-candidates-badge-preview').html('');
-                });
-            });"
-        );
+    $('#pia-candidates-badge-select').on('click', function(e){
+        e.preventDefault();
+        openMediaPicker('#pia-candidates-badge-id', 'input[name="' + piaCandidatesBadgeField + '"]', '#pia-candidates-badge-preview');
+    });
+
+    $('#pia-candidates-badge-remove').on('click', function(){
+        $('#pia-candidates-badge-id').val('');
+        $('input[name="' + piaCandidatesBadgeField + '"]').val('');
+        $('#pia-candidates-badge-preview').html('');
+    });
+});
+JS;
+        wp_add_inline_script('jquery', $admin_js);
     }
 
     public function enqueue_frontend_assets(): void {
@@ -371,8 +374,11 @@ final class PIA_Candidates_MU {
             . '.pia-candidate-directory-controls .pia-candidate-directory-count{margin-left:auto;font-size:13px;color:#475569;white-space:nowrap;} '
             . '.pia-candidate-card{border:1px solid #e5e5e5;padding:16px;text-align:center;border-radius:16px;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.06);} '
             . '.pia-candidate-portrait{position:relative;margin-bottom:12px;} '
-            . '.pia-candidate-portrait img{border-radius:16px;width:100%;height:auto;display:block;} '
-            . '.pia-candidate-portrait--placeholder{border-radius:16px;border:1px dashed #cbd5e1;background:#f8fafc;min-height:220px;display:flex;align-items:center;justify-content:center;padding:18px;color:#475569;font-size:14px;line-height:1.3;} '
+            . '.pia-candidate-portrait-media{border-radius:16px;overflow:hidden;aspect-ratio:2 / 3;background:#f8fafc;} '
+            . '.pia-candidate-portrait-media img{width:100%;height:100%;object-fit:cover;display:block;} '
+            . '.pia-candidate-portrait--placeholder{width:100%;height:100%;border:1px dashed #cbd5e1;background:#f8fafc;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;color:#475569;font-size:14px;line-height:1.3;} '
+            . '.pia-candidate-portrait--placeholder strong{display:block;margin-bottom:6px;color:#0f172a;} '
+            . '.pia-candidate-profile .pia-candidate-portrait{max-width:420px;margin:0 auto 16px;} '
             . '.pia-candidate-badge{position:absolute;left:50%;transform:translateX(-50%);bottom:-12px;background:#fff;padding:6px 10px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,0.15);} '
             . '.pia-candidate-card h3{margin:24px 0 4px;font-size:18px;} '
             . '.pia-candidate-card p{margin:0 0 12px;color:#666;} '
@@ -605,6 +611,30 @@ final class PIA_Candidates_MU {
             self::SETTINGS_SLUG,
             'pia_candidates_display'
         );
+
+        add_settings_field(
+            'fetch_ballotpedia_images',
+            'Fetch Ballotpedia Photos (on import)',
+            [$this, 'render_field_fetch_ballotpedia_images'],
+            self::SETTINGS_SLUG,
+            'pia_candidates_display'
+        );
+
+        add_settings_field(
+            'ballotpedia_images_limit',
+            'Ballotpedia Photo Fetch Limit (per import)',
+            [$this, 'render_field_ballotpedia_images_limit'],
+            self::SETTINGS_SLUG,
+            'pia_candidates_display'
+        );
+
+        add_settings_field(
+            'ballotpedia_images_only_default_county',
+            'Only Fetch Photos for Default County',
+            [$this, 'render_field_ballotpedia_images_only_default_county'],
+            self::SETTINGS_SLUG,
+            'pia_candidates_display'
+        );
     }
 
     public function sanitize_options(array $options): array {
@@ -622,6 +652,9 @@ final class PIA_Candidates_MU {
             'default_district' => isset($options['default_district']) ? sanitize_text_field($options['default_district']) : '',
             'badge_image_id' => isset($options['badge_image_id']) ? absint($options['badge_image_id']) : 0,
             'badge_image_url' => isset($options['badge_image_url']) ? esc_url_raw($options['badge_image_url']) : '',
+            'fetch_ballotpedia_images' => !empty($options['fetch_ballotpedia_images']) ? 1 : 0,
+            'ballotpedia_images_limit' => isset($options['ballotpedia_images_limit']) ? max(0, absint($options['ballotpedia_images_limit'])) : 30,
+            'ballotpedia_images_only_default_county' => !empty($options['ballotpedia_images_only_default_county']) ? 1 : 0,
         ];
     }
 
@@ -790,6 +823,48 @@ final class PIA_Candidates_MU {
         <?php
     }
 
+    public function render_field_fetch_ballotpedia_images(): void {
+        $options = $this->get_options();
+        ?>
+        <label>
+            <input type="checkbox" name="<?php echo esc_attr(self::OPTION_NAME); ?>[fetch_ballotpedia_images]" value="1" <?php checked(!empty($options['fetch_ballotpedia_images'])); ?> />
+            Attempt to pull each candidate’s photo from their Ballotpedia page during imports.
+        </label>
+        <p class="description">
+            Recommended. Photos are saved into the candidate’s <code>portrait_url</code> so cards and profiles match Ballotpedia. Placeholders like “Submit photo” are ignored.
+        </p>
+        <?php
+    }
+
+    public function render_field_ballotpedia_images_limit(): void {
+        $options = $this->get_options();
+        ?>
+        <input
+            type="number"
+            min="0"
+            class="small-text"
+            name="<?php echo esc_attr(self::OPTION_NAME); ?>[ballotpedia_images_limit]"
+            value="<?php echo esc_attr((string) $options['ballotpedia_images_limit']); ?>"
+        />
+        <p class="description">
+            Max Ballotpedia pages to request per import (helps avoid timeouts). Set to <code>0</code> to disable fetching without turning off the setting.
+        </p>
+        <?php
+    }
+
+    public function render_field_ballotpedia_images_only_default_county(): void {
+        $options = $this->get_options();
+        ?>
+        <label>
+            <input type="checkbox" name="<?php echo esc_attr(self::OPTION_NAME); ?>[ballotpedia_images_only_default_county]" value="1" <?php checked(!empty($options['ballotpedia_images_only_default_county'])); ?> />
+            Only fetch photos for candidates whose <strong>county</strong> matches this site’s Default County.
+        </label>
+        <p class="description">
+            Recommended for multisite county pages (prevents pulling photos for every county when the dataset includes the entire state).
+        </p>
+        <?php
+    }
+
     public function handle_import(): void {
         if (!current_user_can('manage_options')) {
             wp_die('Insufficient permissions.');
@@ -798,10 +873,18 @@ final class PIA_Candidates_MU {
             wp_die('Invalid request.');
         }
 
+        $options = $this->get_options();
         $data = $this->get_import_data();
         if (empty($data)) {
             $this->redirect_with_notice('No data found to import. Existing candidates were not changed.');
         }
+
+        $stats = [
+            'created' => 0,
+            'updated' => 0,
+            'images_fetched' => 0,
+            'images_skipped_limit' => 0,
+        ];
 
         foreach ($data as $candidate) {
             if (!is_array($candidate)) {
@@ -822,7 +905,8 @@ final class PIA_Candidates_MU {
                 continue;
             }
 
-            $post_id = $this->get_post_id_by_external_id($external_id, $name);
+            $existing_post_id = $this->get_post_id_by_external_id($external_id, $name);
+            $post_id = $existing_post_id;
             $bio = isset($candidate['bio']) ? wp_kses_post($candidate['bio']) : '';
             $summary = isset($candidate['summary']) ? sanitize_text_field($candidate['summary']) : '';
 
@@ -856,10 +940,22 @@ final class PIA_Candidates_MU {
                 continue;
             }
 
-            $this->update_candidate_meta($post_id, $candidate, $external_id);
+            if ($existing_post_id) {
+                $stats['updated']++;
+            } else {
+                $stats['created']++;
+            }
+
+            $this->update_candidate_meta($post_id, $candidate, $external_id, $options, $stats);
         }
 
-        $this->redirect_with_notice('Import completed.');
+        $notice = 'Import completed. '
+            . $stats['created'] . ' created, '
+            . $stats['updated'] . ' updated. '
+            . $stats['images_fetched'] . ' photos fetched'
+            . ($stats['images_skipped_limit'] ? (' (' . $stats['images_skipped_limit'] . ' skipped due to limit).') : '.');
+
+        $this->redirect_with_notice($notice);
     }
 
     private function get_import_data(): array {
@@ -916,6 +1012,181 @@ final class PIA_Candidates_MU {
             return false;
         }
         return substr($value, -strlen($suffix)) === $suffix;
+    }
+
+    private function is_ballotpedia_placeholder_image_url(string $url): bool {
+        $url = trim($url);
+        if ($url === '') {
+            return false;
+        }
+        $parts = wp_parse_url($url);
+        $host = strtolower((string) ($parts['host'] ?? ''));
+        $path = (string) ($parts['path'] ?? '');
+        $basename = strtolower(basename($path));
+
+        $known_placeholders = [
+            'submitphoto-150px.png',
+            'silhouette_placeholder_image.png',
+            'silhouette placeholder image.png',
+            'silhouette_placeholder_image.jpg',
+            'silhouette_placeholder_image.jpeg',
+        ];
+
+        if (in_array($basename, $known_placeholders, true)) {
+            return true;
+        }
+
+        // Ballotpedia sometimes uses variations; treat any "submitphoto" in their S3 image hosts as placeholder.
+        if (strpos($basename, 'submitphoto') !== false && (strpos($host, 'ballotpedia') !== false || strpos($host, 'amazonaws.com') !== false)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function extract_ballotpedia_candidate_page_url(array $candidate): string {
+        if (empty($candidate['buttons']) || !is_array($candidate['buttons'])) {
+            return '';
+        }
+        foreach ($candidate['buttons'] as $btn) {
+            if (!is_array($btn) || empty($btn['url'])) {
+                continue;
+            }
+            $url = trim((string) $btn['url']);
+            if ($url === '') {
+                continue;
+            }
+            $parts = wp_parse_url($url);
+            $host = strtolower((string) ($parts['host'] ?? ''));
+            if ($host === 'ballotpedia.org') {
+                return esc_url_raw($url);
+            }
+        }
+        return '';
+    }
+
+    private function fetch_ballotpedia_og_image(string $page_url): string {
+        $page_url = esc_url_raw(trim($page_url));
+        if ($page_url === '') {
+            return '';
+        }
+
+        $response = wp_remote_get($page_url, [
+            'timeout' => 12,
+            'redirection' => 5,
+            'headers' => [
+                'User-Agent' => 'PIA-Candidates-MU/0.4.0',
+                'Accept' => 'text/html,application/xhtml+xml',
+            ],
+        ]);
+        if (is_wp_error($response)) {
+            return '';
+        }
+
+        $html = (string) wp_remote_retrieve_body($response);
+        if ($html === '') {
+            return '';
+        }
+
+        $candidates = [];
+        if (preg_match('/<meta\\s+property=[\"\']og:image[\"\']\\s+content=[\"\']([^\"\']+)[\"\']/i', $html, $m)) {
+            $candidates[] = $m[1];
+        }
+        if (preg_match('/<meta\\s+name=[\"\']twitter:image[\"\']\\s+content=[\"\']([^\"\']+)[\"\']/i', $html, $m)) {
+            $candidates[] = $m[1];
+        }
+
+        foreach ($candidates as $raw) {
+            $img = esc_url_raw(trim((string) $raw));
+            if ($img === '' || $this->is_ballotpedia_placeholder_image_url($img)) {
+                continue;
+            }
+            return $img;
+        }
+
+        return '';
+    }
+
+    private function normalize_portrait_url(string $url): string {
+        $url = esc_url_raw(trim($url));
+        if ($url === '' || $this->is_ballotpedia_placeholder_image_url($url)) {
+            return '';
+        }
+        return $url;
+    }
+
+    private function parse_year_from_external_id(string $external_id): int {
+        if (preg_match('/\b(20\d{2})\b/', $external_id, $matches)) {
+            return (int) $matches[1];
+        }
+        return 0;
+    }
+
+    private function should_disambiguate_ballotpedia_url(array $candidate, string $external_id): bool {
+        $county = isset($candidate['county']) ? sanitize_text_field((string) $candidate['county']) : '';
+        if (trim($county) === '') {
+            return false;
+        }
+
+        $year = $this->parse_year_from_external_id($external_id);
+        if ($year <= 0) {
+            return false;
+        }
+
+        $county_slug = sanitize_title($county);
+        // Local candidate IDs in this dataset follow: tx-<year>-<county>-...
+        return (bool) preg_match('/^tx-' . preg_quote((string) $year, '/') . '-' . preg_quote($county_slug, '/') . '-/i', $external_id);
+    }
+
+    private function maybe_disambiguate_ballotpedia_url(string $url, array $candidate, string $external_id): string {
+        $url = trim($url);
+        if ($url === '') {
+            return $url;
+        }
+
+        $parts = wp_parse_url($url);
+        if (empty($parts['host'])) {
+            return $url;
+        }
+
+        $host = strtolower((string) $parts['host']);
+        if ($host !== 'ballotpedia.org' && substr($host, -strlen('.ballotpedia.org')) !== '.ballotpedia.org') {
+            return $url;
+        }
+
+        $path = isset($parts['path']) ? (string) $parts['path'] : '';
+        if (strpos($path, '(') !== false || strpos($path, 'candidate_') !== false) {
+            // Already disambiguated (or at least not a simple name-only slug).
+            return $url;
+        }
+
+        if (!$this->should_disambiguate_ballotpedia_url($candidate, $external_id)) {
+            return $url;
+        }
+
+        $name = isset($candidate['name']) ? sanitize_text_field((string) $candidate['name']) : '';
+        $office = isset($candidate['office']) ? sanitize_text_field((string) $candidate['office']) : '';
+        $state = isset($candidate['state']) ? sanitize_text_field((string) $candidate['state']) : '';
+        $year = $this->parse_year_from_external_id($external_id);
+
+        if ($name === '' || $office === '' || $year <= 0) {
+            return $url;
+        }
+
+        if (strtoupper($state) === 'TX') {
+            $state = 'Texas';
+        }
+        if ($state === '') {
+            $state = 'Texas';
+        }
+
+        // Ballotpedia local candidate pages often use: Name_(Office,_State,_candidate_<year>)
+        $title = sprintf('%s (%s, %s, candidate %d)', $name, $office, $state, $year);
+        $slug = str_replace(' ', '_', $title);
+
+        // Preserve the existing scheme if present; otherwise default to https.
+        $scheme = !empty($parts['scheme']) ? (string) $parts['scheme'] : 'https';
+        return $scheme . '://ballotpedia.org/' . $slug;
     }
 
     private function is_list_array(array $value): bool {
@@ -1212,22 +1483,28 @@ final class PIA_Candidates_MU {
         return $existing ? (int) $existing->ID : 0;
     }
 
-    private function update_candidate_meta(int $post_id, array $candidate, string $external_id): void {
+    private function update_candidate_meta(int $post_id, array $candidate, string $external_id, array $options, array &$stats): void {
         if ($external_id) {
             update_post_meta($post_id, 'pia_candidate_external_id', $external_id);
         }
 
         // If the import provides a portrait URL, ensure it shows by clearing any existing portrait media ID.
         if (array_key_exists('portrait_url', $candidate)) {
-            $new_portrait_url = is_string($candidate['portrait_url']) ? trim($candidate['portrait_url']) : '';
+            $new_portrait_url = is_string($candidate['portrait_url']) ? $this->normalize_portrait_url((string) $candidate['portrait_url']) : '';
             if ($new_portrait_url !== '') {
                 $old_portrait_url = (string) get_post_meta($post_id, 'pia_candidate_portrait_url', true);
-                $new_portrait_url = esc_url_raw($new_portrait_url);
-                if ($new_portrait_url && $new_portrait_url !== $old_portrait_url) {
+                if ($new_portrait_url !== $old_portrait_url) {
                     update_post_meta($post_id, 'pia_candidate_portrait_url', $new_portrait_url);
                     update_post_meta($post_id, 'pia_candidate_portrait_id', 0);
                 }
             }
+        }
+
+        // If an existing portrait URL is a Ballotpedia placeholder image, remove it so we show our placeholder element.
+        $existing_portrait_url = (string) get_post_meta($post_id, 'pia_candidate_portrait_url', true);
+        if ($existing_portrait_url && $this->is_ballotpedia_placeholder_image_url($existing_portrait_url)) {
+            update_post_meta($post_id, 'pia_candidate_portrait_url', '');
+            $existing_portrait_url = '';
         }
 
         $meta_map = [
@@ -1268,7 +1545,8 @@ final class PIA_Candidates_MU {
             for ($i = 1; $i <= 3; $i++) {
                 $button = $candidate['buttons'][$i - 1] ?? [];
                 $label = isset($button['label']) ? sanitize_text_field($button['label']) : '';
-                $url = isset($button['url']) ? esc_url_raw($button['url']) : '';
+                $url = isset($button['url']) ? esc_url_raw((string) $button['url']) : '';
+                $url = $this->maybe_disambiguate_ballotpedia_url($url, $candidate, $external_id);
                 if ($label !== '') {
                     update_post_meta($post_id, "pia_candidate_button_{$i}_label", $label);
                 }
@@ -1280,6 +1558,46 @@ final class PIA_Candidates_MU {
 
         if (!empty($candidate['category'])) {
             wp_set_object_terms($post_id, (array) $candidate['category'], self::TAXONOMY, false);
+        }
+
+        // Optional: fetch portrait from Ballotpedia page during import (cached in portrait_url meta).
+        $fetch_enabled = !empty($options['fetch_ballotpedia_images']);
+        $fetch_limit = isset($options['ballotpedia_images_limit']) ? max(0, (int) $options['ballotpedia_images_limit']) : 0;
+        $only_default_county = !empty($options['ballotpedia_images_only_default_county']);
+
+        if ($fetch_enabled && $fetch_limit > 0) {
+            if (($stats['images_fetched'] + $stats['images_skipped_limit']) >= $fetch_limit) {
+                $stats['images_skipped_limit']++;
+                return;
+            }
+
+            $portrait_id = (int) get_post_meta($post_id, 'pia_candidate_portrait_id', true);
+            $portrait_url = (string) get_post_meta($post_id, 'pia_candidate_portrait_url', true);
+            $portrait_url = $this->normalize_portrait_url($portrait_url);
+
+            // Don't override manually chosen media portraits, or existing non-placeholder URLs.
+            if ($portrait_id || $portrait_url) {
+                return;
+            }
+
+            if ($only_default_county && !empty($options['default_county'])) {
+                $candidate_county = isset($candidate['county']) ? sanitize_text_field((string) $candidate['county']) : '';
+                if (strcasecmp(trim($candidate_county), trim((string) $options['default_county'])) !== 0) {
+                    return;
+                }
+            }
+
+            $page_url = $this->extract_ballotpedia_candidate_page_url($candidate);
+            if ($page_url === '') {
+                return;
+            }
+
+            $img = $this->fetch_ballotpedia_og_image($page_url);
+            if ($img !== '') {
+                update_post_meta($post_id, 'pia_candidate_portrait_url', $img);
+                update_post_meta($post_id, 'pia_candidate_portrait_id', 0);
+                $stats['images_fetched']++;
+            }
         }
     }
 
@@ -1307,6 +1625,9 @@ final class PIA_Candidates_MU {
             'default_district' => '',
             'badge_image_id' => 0,
             'badge_image_url' => '',
+            'fetch_ballotpedia_images' => 1,
+            'ballotpedia_images_limit' => 30,
+            'ballotpedia_images_only_default_county' => 1,
         ];
 
         $options = get_option(self::OPTION_NAME, []);
@@ -1704,8 +2025,9 @@ final class PIA_Candidates_MU {
                 . ' data-search="' . esc_attr($search_blob) . '"'
                 . '>';
             echo $this->get_candidate_portrait_html($post_id, $badge_url, $approved, 'medium');
-            echo '<h3>' . esc_html(get_the_title()) . '</h3>';
-            echo '<p>' . esc_html($office ?: self::MISSING_TEXT) . '</p>';
+            echo '<h3>' . esc_html(get_the_title($post_id)) . '</h3>';
+            $office_line = $office ? ('For ' . $office) : self::MISSING_TEXT;
+            echo '<p>' . esc_html($office_line) . '</p>';
             $parts = array_filter([$state, $county, $district]);
             $location = implode(' • ', $parts);
             echo '<span class="pia-candidate-tag">' . esc_html($location ?: self::MISSING_TEXT) . '</span>';
@@ -1713,12 +2035,28 @@ final class PIA_Candidates_MU {
                 echo '<span class="pia-candidate-featured">Featured</span>';
             }
             echo '<div class="pia-candidate-buttons">';
-            echo '<a href="' . esc_url(get_permalink()) . '">Candidate Profile</a>';
+            echo '<a href="' . esc_url(get_permalink($post_id)) . '">Candidate Profile</a>';
             $website = (string) get_post_meta($post_id, 'pia_candidate_website', true);
             if ($website) {
                 echo '<a href="' . esc_url($website) . '" target="_blank" rel="noopener">Website</a>';
             } else {
-                echo '<span class="pia-candidate-button-disabled">' . esc_html(self::MISSING_TEXT) . '</span>';
+                // Fallback: if no website meta is set, show the first configured CTA button instead of a disabled pill.
+                $fallback_label = '';
+                $fallback_url = '';
+                for ($i = 1; $i <= 3; $i++) {
+                    $label = (string) get_post_meta($post_id, "pia_candidate_button_{$i}_label", true);
+                    $url = (string) get_post_meta($post_id, "pia_candidate_button_{$i}_url", true);
+                    if (trim($label) !== '' && trim($url) !== '') {
+                        $fallback_label = $label;
+                        $fallback_url = $url;
+                        break;
+                    }
+                }
+                if ($fallback_label && $fallback_url) {
+                    echo '<a href="' . esc_url($fallback_url) . '" target="_blank" rel="noopener">' . esc_html($fallback_label) . '</a>';
+                } else {
+                    echo '<span class="pia-candidate-button-disabled">' . esc_html(self::MISSING_TEXT) . '</span>';
+                }
             }
             echo '</div>';
             echo '</article>';
@@ -1753,6 +2091,7 @@ final class PIA_Candidates_MU {
         $video_url = (string) get_post_meta($post_id, 'pia_candidate_video_url', true);
         $website = (string) get_post_meta($post_id, 'pia_candidate_website', true);
         $raw_content = (string) get_post_field('post_content', $post_id);
+        $excerpt = (string) get_post_field('post_excerpt', $post_id);
 
         ob_start();
         echo '<div class="pia-candidate-profile">';
@@ -1765,6 +2104,8 @@ final class PIA_Candidates_MU {
 
         if (trim(wp_strip_all_tags($raw_content)) !== '') {
             echo apply_filters('the_content', $raw_content);
+        } elseif (trim(wp_strip_all_tags($excerpt)) !== '') {
+            echo '<p>' . esc_html($excerpt) . '</p>';
         } else {
             echo '<p>' . esc_html(self::MISSING_TEXT) . '</p>';
         }
@@ -1786,13 +2127,31 @@ final class PIA_Candidates_MU {
             echo '<p>Video: ' . esc_html(self::MISSING_TEXT) . '</p>';
         }
 
+        $profile_url = (string) get_permalink($post_id);
+
         echo '<div class="pia-candidate-buttons">';
+        if ($profile_url) {
+            // Keep the primary "profile" link consistent with the directory cards (internal WP permalink).
+            echo '<a href="' . esc_url($profile_url) . '">Candidate Profile</a>';
+        }
+
         for ($i = 1; $i <= 3; $i++) {
             $label = (string) get_post_meta($post_id, "pia_candidate_button_{$i}_label", true);
             $url = (string) get_post_meta($post_id, "pia_candidate_button_{$i}_url", true);
-            if ($label && $url) {
-                echo '<a href="' . esc_url($url) . '">' . esc_html($label) . '</a>';
+            if (!$label || !$url) {
+                continue;
             }
+
+            // Avoid duplicates when imported data includes a "Candidate Profile" button.
+            $normalized_label = strtolower(trim($label));
+            if ($normalized_label === 'candidate profile' || $normalized_label === 'view profile') {
+                continue;
+            }
+            if ($profile_url && $url === $profile_url) {
+                continue;
+            }
+
+            echo '<a href="' . esc_url($url) . '" target="_blank" rel="noopener">' . esc_html($label) . '</a>';
         }
         echo '</div>';
         echo '</div>';
@@ -1807,7 +2166,7 @@ final class PIA_Candidates_MU {
 
         if ($portrait_id) {
             $image_html = wp_get_attachment_image($portrait_id, $size);
-        } elseif ($portrait_url) {
+        } elseif ($portrait_url && !$this->is_ballotpedia_placeholder_image_url($portrait_url)) {
             $image_html = '<img src="' . esc_url($portrait_url) . '" alt="" />';
         } else {
             $thumbnail_id = get_post_thumbnail_id($post_id);
@@ -1817,11 +2176,16 @@ final class PIA_Candidates_MU {
         }
 
         $output = '<div class="pia-candidate-portrait">';
+        $output .= '<div class="pia-candidate-portrait-media">';
         if ($image_html) {
             $output .= $image_html;
         } else {
-            $output .= '<div class="pia-candidate-portrait--placeholder">' . esc_html(self::MISSING_TEXT) . '</div>';
+            $output .= '<div class="pia-candidate-portrait--placeholder">'
+                . '<strong>Submit a photo</strong>'
+                . '<div>Recommended: 200×300</div>'
+                . '</div>';
         }
+        $output .= '</div>';
         if ($approved && $badge_url) {
             $output .= '<span class="pia-candidate-badge"><img src="' . esc_url($badge_url) . '" alt="PIA Approved" /></span>';
         }

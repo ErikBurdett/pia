@@ -1,0 +1,16 @@
+# Upload NEW versions (temporary names)
+scp -P 21268 \
+  "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu-loader.php" \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-content/mu-plugins/pia-candidates-mu-loader.php.new"
+
+scp -P 21268 -r \
+  "pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu" \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-content/mu-plugins/pia-candidates-mu.new"
+
+# Replace old with new on server
+ssh texasmssite@34.174.186.154 -p 21268 \
+  'cd "/www/texasmssite_545/public/wp-content/mu-plugins/" && \
+   mv "pia-candidates-mu" "pia-candidates-mu.bak.$(date +%Y%m%d%H%M%S)" 2>/dev/null || true && \
+   mv "pia-candidates-mu.new" "pia-candidates-mu" && \
+   mv "pia-candidates-mu-loader.php" "pia-candidates-mu-loader.php.bak.$(date +%Y%m%d%H%M%S)" 2>/dev/null || true && \
+   mv "pia-candidates-mu-loader.php.new" "pia-candidates-mu-loader.php"'
