@@ -1,0 +1,44 @@
+Download wp-config.php from staging + live
+On Kinsta it’s usually at .../public/wp-config.php (same folder level as wp-content). Using your ports (staging 21268, live 36770):
+# staging -> local filescp -P 21268 \  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php" \  "./wp-config.staging.php"# live -> local filescp -P 36770 \  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php" \  "./wp-config.live.php"
+If that path 404s, locate it first:
+ssh texasmssite@34.174.186.154 -p 21268 'ls -la /www/texasmssite_545/public/wp-config.php /www/texasmssite_545/wp-config.php 2>/dev/null'ssh texasmssite@34.174.186.154 -p 36770 'ls -la /www/texasmssite_545/public/wp-config.php /www/texasmssite_545/wp-config.php 2>/dev/null'
+Safest way to change + “push” wp-config.php on a Kinsta multisite
+Work locally: edit the downloaded file, and run a syntax check:
+php -l ./wp-config.staging.php
+Update staging first (atomic, with backup, preserve perms):
+# upload as .newscp -P 21268 \  "./wp-config.staging.php" \  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php.new"# on server: keep perms, backup old, swap in newssh texasmssite@34.174.186.154 -p 21268 \  'cd "/www/texasmssite_545/public" && \   php -l "wp-config.php.new" && \   chmod --reference="wp-config.php" "wp-config.php.new" && \   mv "wp-config.php" "wp-config.php.bak.$(date +%Y%m%d%H%M%S)" && \   mv "wp-config.php.new" "wp-config.php"'
+After verifying staging, repeat the same two steps on live (swap port 36770).
+Notes for Kinsta multisite safety
+Don’t commit/share wp-config.php (DB creds, salts, API tokens).
+Prefer MyKinsta “Push to Live” for files/db; but for wp-config.php, it’s often safest to apply the change separately on each environment using the atomic .new + mv flow above.
+
+-------- 
+
+
+# staging -> local file
+scp -P 21268 \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php" \
+  "./wp-config.staging.php"
+
+# live -> local file
+scp -P 36770 \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php" \
+  "./wp-config.live.php"
+
+
+  ssh texasmssite@34.174.186.154 -p 21268 'ls -la /www/texasmssite_545/public/wp-config.php /www/texasmssite_545/wp-config.php 2>/dev/null'
+ssh texasmssite@34.174.186.154 -p 36770 'ls -la /www/texasmssite_545/public/wp-config.php /www/texasmssite_545/wp-config.php 2>/dev/null'
+
+# upload as .new
+scp -P 21268 \
+  "./wp-config.staging.php" \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php.new"
+
+# on server: keep perms, backup old, swap in new
+ssh texasmssite@34.174.186.154 -p 21268 \
+  'cd "/www/texasmssite_545/public" && \
+   php -l "wp-config.php.new" && \
+   chmod --reference="wp-config.php" "wp-config.php.new" && \
+   mv "wp-config.php" "wp-config.php.bak.$(date +%Y%m%d%H%M%S)" && \
+   mv "wp-config.php.new" "wp-config.php"'
