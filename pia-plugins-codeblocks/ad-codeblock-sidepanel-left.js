@@ -1,11 +1,27 @@
+/*
+PASTE INTO AN AVADA CODE BLOCK (LEFT SIDEPANEL)
+
 <div class="pia-sidepanel-ads pia-sidepanel-ads--left" data-pia-sidepanel-ads="left" data-pia-count="10" aria-label="Sidebar ads (left)">
   <div class="pia-sidepanel-ads__status">Loading…</div>
 </div>
 
 <script>
 (function(){
-  var PIA_BLOG_ID = 13;
-  var PIA_EXCLUDE_IDS = { 5122: true, 5957: true }; // "Ad Space Available"
+  // Same script can exist in both left/right code blocks.
+  if (window.__piaSidepanelAdsBucketsInit) return;
+  window.__piaSidepanelAdsBucketsInit = true;
+
+  // Optional override if you ever need it; normally omit and let admin-ajax determine blog.
+  // Set e.g. <div ... data-pia-blog-id="13">
+  function getBlogIdFromContainer(container){
+    try {
+      var v = container && container.getAttribute ? container.getAttribute('data-pia-blog-id') : '';
+      var n = parseInt(String(v || ''), 10);
+      return Number.isFinite(n) && n > 0 ? n : 0;
+    } catch (e) { return 0; }
+  }
+
+  var PIA_EXCLUDE_IDS = { 5122: true, 5957: true }; // "Ad Space Available" (site-specific)
 
   // Preference buckets from the 2026-02-13 export.
   // - vertical banners
@@ -23,12 +39,13 @@
 
   function stripTrailingSlashes(u){ return String(u || '').replace(/\/+$/, ''); }
   function wpBaseUrl(){
-    // In multisite subdirectory installs this is the safest way to get /randall.
+    // In multisite subdirectory installs this is a reliable way to get /county.
     var link = document.querySelector('link[rel="https://api.w.org/"]');
     if (link && link.href) return stripTrailingSlashes(link.href.replace(/\/wp-json\/?$/, ''));
     return stripTrailingSlashes((window.location.origin || '') + (window.location.pathname || '').split('/').slice(0,2).join('/'));
   }
   function ajaxUrl(){ return wpBaseUrl() + '/wp-admin/admin-ajax.php'; }
+
   function shuffle(arr){
     for (var i = arr.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -45,6 +62,13 @@
       if (!seen[v]) { seen[v] = true; out.push(v); }
     }
     return out;
+  }
+  function isMobileViewport(){
+    try { return window.matchMedia && window.matchMedia('(max-width: 800px)').matches; }
+    catch (e) { return false; }
+  }
+  function looksLikeAdSpaceAvailableHtml(html){
+    return String(html || '').toLowerCase().indexOf('ad space available') !== -1;
   }
 
   function buildPriorityOrder(){
@@ -117,7 +141,7 @@
     return out;
   }
 
-  function fetchAdsHtml(adIds, side){
+  function fetchAdsHtml(adIds, side, blogId){
     var ids = (adIds || []).slice();
     if (!ids.length) return Promise.resolve([]);
 
@@ -126,7 +150,7 @@
     for (var i = 0; i < ids.length; i++) {
       body.set('deferedAds[' + i + '][ad_method]', 'ad');
       body.set('deferedAds[' + i + '][ad_id]', String(ids[i]));
-      body.set('deferedAds[' + i + '][blog_id]', String(PIA_BLOG_ID));
+      if (blogId && blogId > 0) body.set('deferedAds[' + i + '][blog_id]', String(blogId));
       body.set('deferedAds[' + i + '][elementId]', 'pia-sidepanel-' + side + '-' + String(ids[i]));
     }
 
@@ -147,6 +171,7 @@
     for (var i=0; i<results.length; i++) {
       var res = results[i];
       if (!res || res.status !== 'success' || !res.item) continue;
+      if (looksLikeAdSpaceAvailableHtml(res.item)) continue;
       var slot = document.createElement('div');
       slot.className = 'pia-ad-slot';
       slot.innerHTML = String(res.item);
@@ -158,12 +183,26 @@
     return added;
   }
 
-  function renderInto(container, side){
-    if (!container || container.getAttribute('data-pia-loaded') === '1') return;
-    container.setAttribute('data-pia-loaded', '1');
+  function renderInto(container){
+    if (!container) return;
+    if (container.getAttribute('data-pia-loaded') === '1' || container.getAttribute('data-pia-loading') === '1') return;
+
+    var side = String(container.getAttribute('data-pia-sidepanel-ads') || '').toLowerCase();
+    if (side !== 'left' && side !== 'right') return;
+
+    if (isMobileViewport()) {
+      // CSS also hides, but skipping avoids AJAX work.
+      var s0 = container.querySelector('.pia-sidepanel-ads__status');
+      if (s0) s0.remove();
+      return;
+    }
+
+    container.setAttribute('data-pia-loading', '1');
 
     var target = parseInt(container.getAttribute('data-pia-count') || '10', 10);
     if (!target || target < 1) target = 10;
+
+    var blogId = getBlogIdFromContainer(container);
 
     var reserveEach = Math.max(target * 2, 20);
     var alloc = ensureAllocation(reserveEach);
@@ -183,19 +222,15 @@
         var h = 0;
 
         if (row) {
-          // Prefer the tallest column in the same row (usually the center content).
           var cols = row.querySelectorAll('.fusion-layout-column, .fusion_builder_column, .fusion-builder-column, .fusion-column-wrapper');
           for (var i = 0; i < cols.length; i++) {
             var ch = cols[i].getBoundingClientRect().height || 0;
             if (ch > h) h = ch;
           }
-
-          // Fall back to row height if columns weren't found.
           if (!h) h = row.getBoundingClientRect().height || 0;
         }
 
         if (!h || h < 300) {
-          // Last-resort: use main content height.
           var main = document.querySelector('#main') || document.querySelector('main') || document.body;
           h = main ? (main.getBoundingClientRect().height || 0) : 0;
         }
@@ -204,27 +239,30 @@
       } catch (e) {}
     }
 
-    function done(){
-      if (statusEl) statusEl.remove();
+    function done(added){
+      container.removeAttribute('data-pia-loading');
+      container.setAttribute('data-pia-loaded', '1');
+      if (statusEl) {
+        if (added && added > 0) statusEl.remove();
+        else statusEl.textContent = 'No ads available.';
+      }
       applyFullHeightSpacing();
     }
 
-    fetchAdsHtml(candidates, side).then(function(results){
+    fetchAdsHtml(candidates, side, blogId).then(function(results){
       var added = appendRendered(container, results, target);
-      if (added >= target) { done(); return; }
+      if (added >= target) { done(added); return; }
 
       // One bounded retry (grabs more IDs, still fast).
       var extraIds = takeExtra(alloc, Math.max((target - added) * 2, 8), side);
-      if (!extraIds.length) { done(); return; }
-      fetchAdsHtml(extraIds, side).then(function(results2){
-        appendRendered(container, results2, target - added);
-        done();
+      if (!extraIds.length) { done(added); return; }
+      fetchAdsHtml(extraIds, side, blogId).then(function(results2){
+        added += appendRendered(container, results2, target - added);
+        done(added);
       });
     });
 
-    // Also try once early (before images fully load).
     applyFullHeightSpacing();
-    // And again after the full page load (images/iframes can affect heights).
     window.addEventListener('load', applyFullHeightSpacing, { once: true });
     window.addEventListener('resize', function(){
       clearTimeout(window.__piaSidepanelAdsResizeT);
@@ -233,8 +271,9 @@
   }
 
   function init(){
-    var el = document.querySelector('.pia-sidepanel-ads[data-pia-sidepanel-ads=\"left\"]');
-    renderInto(el, 'left');
+    var els = document.querySelectorAll('.pia-sidepanel-ads[data-pia-sidepanel-ads]');
+    if (!els || !els.length) return;
+    for (var i=0; i<els.length; i++) renderInto(els[i]);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
@@ -247,6 +286,10 @@
   .pia-sidepanel-ads{
     /* Spread 10 ads across full column height */
     --pia-ad-min-gap: 60px;
+    --pia-edge-pad: 40px; /* extra space above first + below last */
+    box-sizing: border-box;
+    padding-top: var(--pia-edge-pad);
+    padding-bottom: var(--pia-edge-pad);
     min-height: var(--pia-fill-height, auto);
     display: flex;
     flex-direction: column;
@@ -264,6 +307,10 @@
     max-width: 100%;
   }
 
+  /* Extra "breathing room" for the very first/last ad */
+  .pia-sidepanel-ads .pia-ad-slot:first-child{ margin-top: 10px; }
+  .pia-sidepanel-ads .pia-ad-slot:last-child{ margin-bottom: 10px; }
+
   .pia-sidepanel-ads img,
   .pia-sidepanel-ads iframe{
     display: block;
@@ -278,4 +325,13 @@
     text-align: center;
     font-size: 14px;
   }
+
+  /* Non-mobile: hide sidepanels on small screens */
+  @media (max-width: 800px) {
+    .pia-sidepanel-ads { display:none !important; }
+  }
 </style>
+*/
+
+// (This file is a copy/paste snippet; keep it syntactically valid.)
+void 0;
