@@ -9,7 +9,7 @@
 <script>
 (function(){
   var PIA_BLOG_ID = 13;
-  var PIA_GROUP_IDS = [109, 113, 108, 112, 101, 107];
+  var PIA_GROUP_IDS = [109, 112, 113];
 
   function stripTrailingSlashes(u){ return String(u || '').replace(/\/+$/, ''); }
   function wpBaseUrl(){
