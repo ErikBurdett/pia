@@ -58,7 +58,7 @@
   #pia-vimeo-feed .pia-title a{ color: inherit; text-decoration: none; }
   #pia-vimeo-feed .pia-title a:hover{ text-decoration: underline; }
 
-  /* Responsive 16:9 embed (fixes "height:100%" issues on mobile) */
+  /* Responsive 16:9 embed */
   #pia-vimeo-feed .pia-embed{
     position: relative;
     width: 100%;
@@ -66,15 +66,6 @@
     border-radius: 12px;
     overflow: hidden;
     background: rgba(0,0,0,.06);
-  }
-
-  /* Vimeo oEmbed sometimes wraps the iframe in a div */
-  #pia-vimeo-feed .pia-embed > div{
-    position: absolute !important;
-    inset: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
   }
 
   #pia-vimeo-feed .pia-embed iframe{
@@ -100,15 +91,6 @@
     justify-content:center;
   }
 
-  /*
-    Guard rail:
-    Some themes/plugins occasionally inject a duplicate <iframe> as a direct child
-    of the card (outside `.pia-embed`). We never intentionally do that, so hide it.
-  */
-  #pia-vimeo-feed .pia-card > iframe{
-    display:none !important;
-  }
-
   #pia-vimeo-feed .pia-btn{
     display:inline-flex;
     align-items:center;
@@ -132,12 +114,12 @@
 
   @media (max-width: 768px){
     #pia-vimeo-feed{
-      padding: 14px 12px 0;        /* more comfortable on phones */
+      padding: 14px 12px 0;
       scroll-margin-top: 160px;
     }
 
     #pia-vimeo-feed .pia-feed-title{
-      margin-top: 34px;            /* bigger push-down on mobile */
+      margin-top: 34px;
     }
 
     #pia-vimeo-feed .pia-card{
@@ -152,7 +134,8 @@
 
 <script>
 (function(){
-  var INOREADER_FEED_URL = "/wp-json/pia/v1/inoreader?feed=pia_latest_from_us";
+  var SHOWCASE_ID = "12047150";
+  var VIMEO_SHOWCASE_URL = "/wp-json/pia/v1/vimeo-showcase?showcase_id=" + encodeURIComponent(SHOWCASE_ID) + "&page=1&per_page=50";
   var NETWORK_URL = "https://community.patriotsinaction.com/share/Pw_KGVpesTKkKrNI?utm_source=manual";
 
   // Keep in sync with the CSS scroll-margin-top for best results
@@ -164,43 +147,19 @@
   var statusEl = root.querySelector(".pia-status");
   var listEl = root.querySelector(".pia-list");
 
-  function isVimeoUrl(u){
-    return /^https?:\/\/(www\.)?vimeo\.com\/\d+/.test(u || "");
-  }
-  function getVimeoId(u){
-    var m = String(u || "").match(/vimeo\.com\/(\d+)/);
-    return m ? m[1] : null;
-  }
-  function normalizeVimeoUrl(u){
-    var id = getVimeoId(u);
-    return id ? ("https://vimeo.com/" + id) : null;
-  }
-
   function fetchJson(url){
     return fetch(url, { credentials: "same-origin" }).then(function(r){
-      if(!r.ok) throw new Error("Feed fetch failed: " + r.status);
+      if(!r.ok) throw new Error("Fetch failed: " + r.status);
       return r.json();
     });
   }
 
-  function parseInoreaderJsonFeed(feed){
-    var items = (feed && Array.isArray(feed.items)) ? feed.items : [];
-    var out = [];
-    for (var i=0; i<items.length; i++){
-      var it = items[i] || {};
-      var title = String(it.title || "").trim();
-      var url = normalizeVimeoUrl(it.url || it.external_url || it.id || "");
-      if (isVimeoUrl(url)) out.push({ title: title, url: url });
-    }
-    return out;
-  }
-
-  function fetchOembed(vimeoUrl){
-    var endpoint = "https://vimeo.com/api/oembed.json?url=" + encodeURIComponent(vimeoUrl) + "&responsive=1";
-    return fetch(endpoint).then(function(r){
-      if(!r.ok) throw new Error("oEmbed failed: " + r.status);
-      return r.json();
-    });
+  function getVimeoIdFromUriOrLink(obj){
+    // obj.uri: "/videos/1164792589" OR obj.link: "https://vimeo.com/1164792589"
+    var u = (obj && obj.uri) ? String(obj.uri) : "";
+    var l = (obj && obj.link) ? String(obj.link) : "";
+    var m = u.match(/\/videos\/(\d+)/) || l.match(/vimeo\.com\/(\d+)/);
+    return m ? m[1] : null;
   }
 
   function buildShareUrlByAnchor(anchorId){
@@ -221,77 +180,30 @@
     return Promise.resolve();
   }
 
-  function removeStrayIframes(card){
-    // Ensure the only iframe(s) that can exist are inside `.pia-embed`
-    var embed = card.querySelector(".pia-embed");
+  function buildPlayerSrc(video){
+    // Prefer the API-provided player_embed_url (already includes h= hash)
+    var src = (video && video.player_embed_url) ? String(video.player_embed_url) : "";
+    var id = getVimeoIdFromUriOrLink(video);
 
-    // Remove any iframe outside the embed (the "extra iframe under the card" bug)
-    var iframes = card.querySelectorAll("iframe");
-    for (var i = 0; i < iframes.length; i++){
-      var f = iframes[i];
-      if (!embed || !embed.contains(f)) {
-        if (f && f.parentNode) f.parentNode.removeChild(f);
-      }
-    }
-
-    // Inside `.pia-embed`, keep at most one iframe
-    if (embed) {
-      var inEmbed = embed.querySelectorAll("iframe");
-      for (var j = 1; j < inEmbed.length; j++){
-        if (inEmbed[j] && inEmbed[j].parentNode) inEmbed[j].parentNode.removeChild(inEmbed[j]);
-      }
-      // Also remove any script tags (we don't want third-party scripts injected via oEmbed HTML)
-      var scripts = embed.querySelectorAll("script");
-      for (var s = 0; s < scripts.length; s++){
-        if (scripts[s] && scripts[s].parentNode) scripts[s].parentNode.removeChild(scripts[s]);
-      }
-    }
+    if (!src && id) src = "https://player.vimeo.com/video/" + encodeURIComponent(id);
+    return src || "";
   }
 
-  function installIframeGuard(card){
-    if (card._piaIframeGuardInstalled) return;
-    card._piaIframeGuardInstalled = true;
-
-    removeStrayIframes(card);
-
-    if (!("MutationObserver" in window)) return;
-    var obs = new MutationObserver(function(){
-      removeStrayIframes(card);
-    });
-    obs.observe(card, { childList: true, subtree: true });
-  }
-
-  function buildIframeSpecFromOembedHtml(html){
-    try {
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(String(html || ""), "text/html");
-      var iframe = doc.querySelector("iframe");
-      if (!iframe) return null;
-
-      var src = iframe.getAttribute("src") || "";
-      if (!src) return null;
-
-      return {
-        src: src,
-        allow: iframe.getAttribute("allow") || "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share",
-        referrerpolicy: iframe.getAttribute("referrerpolicy") || "strict-origin-when-cross-origin"
-      };
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function renderSingleVimeoIframe(embed, iframeSpec, titleText){
+  function renderSingleIframe(embed, src, titleText){
     if (!embed) return;
 
-    // Clear embed completely and insert exactly one iframe we control
     while (embed.firstChild) embed.removeChild(embed.firstChild);
 
+    if (!src) {
+      embed.textContent = "Video could not be embedded.";
+      return;
+    }
+
     var iframe = document.createElement("iframe");
-    iframe.src = iframeSpec.src;
+    iframe.src = src;
     iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute("allow", iframeSpec.allow);
-    iframe.setAttribute("referrerpolicy", iframeSpec.referrerpolicy);
+    iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share");
+    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
     iframe.setAttribute("loading", "lazy");
     iframe.allowFullscreen = true;
     iframe.setAttribute("allowfullscreen", "");
@@ -300,14 +212,18 @@
     embed.appendChild(iframe);
   }
 
-  function makeCard(item, index){
+  function makeCard(video, index){
+    var id = getVimeoIdFromUriOrLink(video) || "";
+    var link = (video && video.link) ? String(video.link) : (id ? ("https://vimeo.com/" + id) : "");
+    var title = (video && video.name) ? String(video.name).trim() : "Untitled";
+    var descText = (video && video.description) ? String(video.description).trim() : "";
+
     var card = document.createElement("article");
     card.className = "pia-card";
-    card.setAttribute("data-url", item.url);
     card.setAttribute("data-loaded", "0");
-
-    var vimeoId = getVimeoId(item.url);
-    card.setAttribute("data-vimeo-id", vimeoId || "");
+    card.setAttribute("data-vimeo-id", id);
+    card.setAttribute("data-player-src", buildPlayerSrc(video));
+    card.setAttribute("data-url", link);
 
     var shortAnchorId = "video-" + index;
     card.id = shortAnchorId;
@@ -317,7 +233,7 @@
 
     var titleLink = document.createElement("a");
     titleLink.href = "#" + shortAnchorId;
-    titleLink.textContent = item.title || "Loading...";
+    titleLink.textContent = title;
     titleLink.title = "Copy/share link to this video section";
     h3.appendChild(titleLink);
 
@@ -327,7 +243,7 @@
 
     var desc = document.createElement("div");
     desc.className = "pia-desc";
-    desc.textContent = "";
+    desc.textContent = descText || "";
 
     var actions = document.createElement("div");
     actions.className = "pia-actions";
@@ -347,7 +263,7 @@
     shareBtn.addEventListener("click", function(){
       var shareUrl = buildShareUrlByAnchor(shortAnchorId);
       if (navigator.share) {
-        navigator.share({ title: item.title || "Patriots In Action TV", url: shareUrl }).catch(function(){});
+        navigator.share({ title: title || "Patriots In Action TV", url: shareUrl }).catch(function(){});
         return;
       }
       copyToClipboard(shareUrl).then(function(){
@@ -363,55 +279,21 @@
     card.appendChild(desc);
     card.appendChild(actions);
 
-    installIframeGuard(card);
     return card;
   }
 
   function hydrateCard(card){
-    if (card._piaHydratePromise) return card._piaHydratePromise;
-    if(card.getAttribute("data-loaded") === "1") return Promise.resolve();
-    card.setAttribute("data-loaded", "loading");
+    if (!card || card.getAttribute("data-loaded") === "1") return Promise.resolve();
+    card.setAttribute("data-loaded", "1");
 
-    var videoUrl = card.getAttribute("data-url");
-    card._piaHydratePromise = fetchOembed(videoUrl).then(function(data){
-      var titleLink = card.querySelector(".pia-title a");
-      if(!titleLink.textContent.trim() || titleLink.textContent.trim() === "Loading..."){
-        titleLink.textContent = data.title || videoUrl;
-      }
+    var embed = card.querySelector(".pia-embed");
+    if (!embed) return Promise.resolve();
 
-      card.querySelector(".pia-desc").textContent = (data.description || "").trim();
-
-      var embed = card.querySelector(".pia-embed");
-      var iframeSpec = buildIframeSpecFromOembedHtml(data.html);
-      if (!iframeSpec) {
-        // Fallback: build a minimal player URL from the Vimeo ID
-        var vimeoId = card.getAttribute("data-vimeo-id") || getVimeoId(videoUrl) || "";
-        if (vimeoId) {
-          iframeSpec = {
-            src: "https://player.vimeo.com/video/" + encodeURIComponent(vimeoId),
-            allow: "autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share",
-            referrerpolicy: "strict-origin-when-cross-origin"
-          };
-        }
-      }
-
-      if (iframeSpec) {
-        renderSingleVimeoIframe(embed, iframeSpec, (data.title || titleLink.textContent || "").trim());
-      } else {
-        // Last resort: show an error message instead of injecting arbitrary HTML
-        embed.textContent = "Video could not be embedded.";
-      }
-      embed.setAttribute("aria-busy", "false");
-
-      removeStrayIframes(card);
-      card.setAttribute("data-loaded", "1");
-      card._piaHydratePromise = null;
-    })["catch"](function(err){
-      card._piaHydratePromise = null;
-      card.setAttribute("data-loaded", "0"); // allow retry on next intersection/hash jump
-      throw err;
-    });
-    return card._piaHydratePromise;
+    var src = card.getAttribute("data-player-src") || "";
+    var titleText = (card.querySelector(".pia-title a") || {}).textContent || "";
+    renderSingleIframe(embed, src, titleText.trim());
+    embed.setAttribute("aria-busy", "false");
+    return Promise.resolve();
   }
 
   function getTargetFromHash(){
@@ -458,27 +340,26 @@
 
   statusEl.textContent = "Loading videos...";
 
-  fetchJson(INOREADER_FEED_URL)
-    .then(function(feed){
-      var items = parseInoreaderJsonFeed(feed);
-
-      var seen = {};
-      var videos = [];
-      for (var i=0; i<items.length; i++){
-        var u = items[i].url;
-        if (!seen[u]) { seen[u] = true; videos.push(items[i]); }
-      }
-
-      if(!videos.length){
-        statusEl.textContent = "No Vimeo video links found in the feed.";
+  fetchJson(VIMEO_SHOWCASE_URL)
+    .then(function(json){
+      var videos = (json && Array.isArray(json.data)) ? json.data : [];
+      if (!videos.length) {
+        statusEl.textContent = "No videos found in this showcase.";
         return;
       }
+
+      // Optional: sort newest first by created_time (your API may already return in order)
+      videos.sort(function(a,b){
+        var at = Date.parse(a && a.created_time ? a.created_time : "") || 0;
+        var bt = Date.parse(b && b.created_time ? b.created_time : "") || 0;
+        return bt - at;
+      });
 
       statusEl.textContent = videos.length + " videos";
 
       var cards = [];
-      for (var j=0; j<videos.length; j++){
-        var c = makeCard(videos[j], j + 1);
+      for (var i=0; i<videos.length; i++){
+        var c = makeCard(videos[i], i + 1);
         cards.push(c);
         listEl.appendChild(c);
       }
@@ -486,7 +367,7 @@
       var observer = ("IntersectionObserver" in window) ? new IntersectionObserver(function(entries){
         for (var k=0; k<entries.length; k++){
           var e = entries[k];
-          if(e.isIntersecting){
+          if (e.isIntersecting){
             observer.unobserve(e.target);
             hydrateCard(e.target)["catch"](console.error);
           }
@@ -504,7 +385,7 @@
     })
     .catch(function(err){
       console.error(err);
-      statusEl.textContent = "Could not load the feed. Check console for details.";
+      statusEl.textContent = "Could not load the showcase feed. Check console for details.";
     });
 })();
 </script>

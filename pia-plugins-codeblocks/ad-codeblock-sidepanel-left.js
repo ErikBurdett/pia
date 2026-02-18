@@ -19,6 +19,388 @@
   }
   function ajaxUrl(){ return wpBaseUrl() + '/wp-admin/admin-ajax.php'; }
 
+  function looksLikeAdvancedAdsInlineJs(text){
+    var t = String(text || '').replace(/^\s+|\s+$/g, '');
+    if (!t) return false;
+    if (t.indexOf('advanced_ads_ready') !== -1) return true;
+    if (t.indexOf('advads') !== -1 && t.indexOf('jQuery') !== -1 && /function\s*\(/.test(t)) return true;
+    return false;
+  }
+
+  function ensurePatriGridCss(){
+    if (document.getElementById('pia-patri-grid-css')) return;
+    var css = [
+      '.pia-sidepanel-ads ul[id^="patri-grid-"]{list-style:none;margin:0;padding:0;overflow:hidden;}',
+      '.pia-sidepanel-ads ul[id^="patri-grid-"]>li{float:left;width:17%;min-width:175px;list-style:none;margin:0 3% 3% 0;padding:0;overflow:hidden;}',
+      '.pia-sidepanel-ads ul[id^="patri-grid-"]>li.last{margin-right:0;}',
+      '.pia-sidepanel-ads ul[id^="patri-grid-"]>li.last+li{clear:both;}'
+    ].join('');
+    var style = document.createElement('style');
+    style.id = 'pia-patri-grid-css';
+    style.textContent = css;
+    (document.head || document.documentElement).appendChild(style);
+  }
+
+  function removeVisibleInlineCodeArtifacts(slotEl){
+    if (!slotEl) return;
+
+    function isArtifactNode(el, kind){
+      if (!el || el.nodeType !== 1) return false;
+      var txt = String(el.textContent || '').trim();
+      if (!txt) return false;
+      if (txt.length > 80000) return false;
+
+      // Don't remove real ad markup.
+      if (el.querySelector && el.querySelector('img,iframe,video,svg,canvas,form,input,textarea,select,button')) return false;
+
+      if (kind === 'js') {
+        return txt.indexOf('advanced_ads_ready') !== -1 && txt.indexOf('unslider') !== -1;
+      }
+      if (kind === 'css') {
+        return (txt.indexOf('#patri-grid-') !== -1 || txt.indexOf('patri-grid-') !== -1) && txt.indexOf('{') !== -1 && txt.indexOf('}') !== -1;
+      }
+      return false;
+    }
+
+    // Remove inline scripts/styles that belong to patri grid/slider to avoid “showing code as text”.
+    var scripts = slotEl.querySelectorAll('script');
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      var s = scripts[i];
+      var t = String(s.text || s.textContent || '');
+      if (t.indexOf('advanced_ads_ready') !== -1 && t.indexOf('unslider') !== -1) s.remove();
+    }
+    var styles = slotEl.querySelectorAll('style');
+    for (var j = styles.length - 1; j >= 0; j--) {
+      var st = styles[j];
+      var ct = String(st.textContent || '');
+      if (ct.indexOf('#patri-grid-') !== -1 || ct.indexOf('patri-grid-') !== -1) st.remove();
+    }
+
+    // Remove sanitizer-wrapped JS/CSS that is being rendered as normal text.
+    var all = slotEl.querySelectorAll('*');
+    for (var k = all.length - 1; k >= 0; k--) {
+      var el = all[k];
+      if (isArtifactNode(el, 'js') || isArtifactNode(el, 'css')) {
+        el.remove();
+      }
+    }
+  }
+
+  function initPatriSliders(slotEl){
+    if (!slotEl || !window.jQuery) return;
+    if (!jQuery.fn || !jQuery.fn.unslider) return;
+
+    var sliders = slotEl.querySelectorAll('.custom-slider[class*="patri-slider-"]');
+    for (var i = 0; i < sliders.length; i++) {
+      var el = sliders[i];
+      if (!el || el.getAttribute('data-pia-unslider') === '1') continue;
+      el.setAttribute('data-pia-unslider', '1');
+
+      var $s = jQuery(el);
+      if ($s.data('unslider')) continue;
+
+      $s.on('unslider.ready', function() {
+        jQuery('div.custom-slider ul li').css('display', 'block');
+      });
+
+      $s.unslider({ delay: 10000, autoplay: true, nav: false, arrows: false, infinite: true });
+
+      $s.on('mouseover', function() { $s.unslider('stop'); })
+        .on('mouseout', function() { $s.unslider('start'); });
+    }
+  }
+
+  function postProcessSlot(slotEl){
+    ensurePatriGridCss();
+    removeVisibleInlineCodeArtifacts(slotEl);
+
+    // Unslider may load late; retry a bit.
+    var tries = 0;
+    (function retry(){
+      tries++;
+      initPatriSliders(slotEl);
+      if (tries < 15 && (!window.jQuery || !jQuery.fn || !jQuery.fn.unslider)) {
+        setTimeout(retry, 200);
+      }
+    })();
+  }
+
+  function activateAdScriptsIn(slotEl){
+    if (!slotEl) return;
+
+    function isSliderInitJs(text){
+      var t = String(text || '');
+      return t.indexOf('advanced_ads_ready') !== -1 && t.indexOf('unslider') !== -1;
+    }
+
+    function normalizeInlineJsText(js){
+      // Sometimes sanitizers leave literal "\n" sequences in text nodes.
+      return String(js || '')
+        .replace(/\\r\\n/g, '\n')
+        .replace(/\\n/g, '\n')
+        .replace(/\\t/g, '\t');
+    }
+
+    function hasForbiddenDescendants(el){
+      // If these are present, this isn't just "displayed text".
+      return !!(el.querySelector && el.querySelector('img,iframe,video,svg,canvas,form,input,textarea,select,button,a,ul,ol,li,table'));
+    }
+
+    function isTextyLineElement(el){
+      if (!el || el.nodeType !== 1) return false;
+      var tn = (el.tagName || '').toUpperCase();
+      if (tn === 'SCRIPT' || tn === 'STYLE' || tn === 'NOSCRIPT' || tn === 'TEXTAREA') return false;
+      if (hasForbiddenDescendants(el)) return false;
+      // Must not contain structural markup besides BR/SPAN/CODE.
+      var kids = el.childNodes || [];
+      for (var i = 0; i < kids.length; i++) {
+        var k = kids[i];
+        if (!k) continue;
+        if (k.nodeType === 3) continue;
+        if (k.nodeType !== 1) return false;
+        var kt = (k.tagName || '').toUpperCase();
+        if (kt !== 'BR' && kt !== 'SPAN' && kt !== 'CODE') return false;
+      }
+      return String(el.textContent || '').trim().length > 0;
+    }
+
+    function tryJoinSiblingLinesIntoScript(startEl){
+      if (!startEl || startEl.nodeType !== 1) return false;
+      if (!isTextyLineElement(startEl)) return false;
+
+      var parent = startEl.parentNode;
+      if (!parent || parent.nodeType !== 1) return false;
+      if ((parent.tagName || '').toUpperCase() === 'SCRIPT') return false;
+
+      var js = '';
+      var nodesToRemove = [];
+      var cur = startEl;
+      var maxNodes = 80;
+
+      while (cur && maxNodes-- > 0) {
+        if (cur.nodeType === 1) {
+          if (!isTextyLineElement(cur)) break;
+          js += String(cur.textContent || '') + '\n';
+          nodesToRemove.push(cur);
+        } else if (cur.nodeType === 3) {
+          if (String(cur.nodeValue || '').trim()) {
+            js += String(cur.nodeValue || '') + '\n';
+            nodesToRemove.push(cur);
+          }
+        } else if (cur.nodeType === 1 && (cur.tagName || '').toUpperCase() === 'BR') {
+          js += '\n';
+          nodesToRemove.push(cur);
+        }
+
+        var norm = normalizeInlineJsText(js);
+        if (isSliderInitJs(norm) && (norm.indexOf('});});') !== -1 || norm.indexOf('}); });') !== -1 || norm.indexOf('unslider("start")') !== -1)) {
+          js = norm;
+          break;
+        }
+
+        if (js.length > 50000) {
+          js = normalizeInlineJsText(js);
+          break;
+        }
+
+        cur = cur.nextSibling;
+      }
+
+      js = normalizeInlineJsText(js).trim();
+      if (!isSliderInitJs(js)) return false;
+
+      var s = document.createElement('script');
+      s.setAttribute('data-pia-activated', '1');
+      s.text = js;
+
+      // Insert before the first node, then remove the run.
+      var first = nodesToRemove[0];
+      if (first && first.parentNode) first.parentNode.insertBefore(s, first);
+      for (var i = 0; i < nodesToRemove.length; i++) {
+        var n = nodesToRemove[i];
+        if (n && n.parentNode) n.parentNode.removeChild(n);
+      }
+      return true;
+    }
+
+    function isAllowedJsWrapper(el){
+      if (!el || el.nodeType !== 1) return false;
+      var tn = (el.tagName || '').toUpperCase();
+      if (tn === 'SCRIPT' || tn === 'STYLE' || tn === 'NOSCRIPT' || tn === 'TEXTAREA') return false;
+      // Wrapper must contain only BR/SPAN and text (common sanitizers).
+      var kids = el.childNodes || [];
+      for (var i = 0; i < kids.length; i++) {
+        var k = kids[i];
+        if (!k) continue;
+        if (k.nodeType === 3) continue; // text
+        if (k.nodeType !== 1) return false;
+        var kt = (k.tagName || '').toUpperCase();
+        if (kt !== 'BR' && kt !== 'SPAN') return false;
+      }
+      var txt = String(el.textContent || '').trim();
+      if (!txt) return false;
+      if (txt.length > 50000) return false;
+      txt = normalizeInlineJsText(txt);
+      // Only treat as "whole script" if it looks complete; otherwise we'll join siblings.
+      if (isSliderInitJs(txt) && (txt.indexOf('});});') !== -1 || txt.indexOf('}); });') !== -1 || txt.indexOf('unslider("start")') !== -1)) return true;
+      return false;
+    }
+
+    function replaceWrapperWithScript(el){
+      var js = String(el.textContent || '');
+      if (!js) return false;
+      var s = document.createElement('script');
+      s.setAttribute('data-pia-activated', '1');
+      s.text = js;
+      if (el.parentNode) el.parentNode.replaceChild(s, el);
+      return true;
+    }
+
+    // Phase 1: handle sanitizer-wrapped inline JS blocks like <p><span>..</span><br>..</p>
+    try {
+      var all = slotEl.querySelectorAll('*');
+      for (var ai = 0; ai < all.length; ai++) {
+        var el = all[ai];
+        if (!el || el.getAttribute && el.getAttribute('data-pia-activated') === '1') continue;
+        // First try joining line-split blocks (e.g. multiple <p> siblings).
+        if (String(el.textContent || '').indexOf('advanced_ads_ready') !== -1) {
+          if (tryJoinSiblingLinesIntoScript(el)) continue;
+        }
+        if (!isAllowedJsWrapper(el)) continue;
+        replaceWrapperWithScript(el);
+      }
+    } catch (e) { /* ignore */ }
+
+    // Some Advanced Ads outputs return raw JS outside <script> tags; convert to <script>.
+    function collectTextNodes(root, out){
+      if (!root || !out) return;
+      // Never treat real script/style contents as "visible text".
+      if (root.nodeType === 1) {
+        var tn = (root.tagName || '').toUpperCase();
+        if (tn === 'SCRIPT' || tn === 'STYLE' || tn === 'NOSCRIPT' || tn === 'TEXTAREA') return;
+      }
+      var kids = root.childNodes;
+      if (!kids || !kids.length) return;
+      for (var i = 0; i < kids.length; i++) {
+        var n = kids[i];
+        if (!n) continue;
+        if (n.nodeType === 3) out.push(n);
+        else if (n.nodeType === 1) collectTextNodes(n, out);
+      }
+    }
+
+    function upgradeIfWrappedJsText(textNode){
+      var p = textNode && textNode.parentNode;
+      if (!p || p.nodeType !== 1) return false;
+      var tag = (p.tagName || '').toUpperCase();
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'TEXTAREA') return false;
+
+      // Only do this when the wrapper is basically "just text" (optionally with <br>).
+      var kids = p.childNodes || [];
+      for (var i = 0; i < kids.length; i++) {
+        var k = kids[i];
+        if (!k) continue;
+        if (k.nodeType === 1 && (k.tagName || '').toUpperCase() !== 'BR') return false;
+      }
+
+      var js = String(p.textContent || '');
+      if (!looksLikeAdvancedAdsInlineJs(js)) return false;
+
+      var s = document.createElement('script');
+      s.setAttribute('data-pia-activated', '1');
+      s.text = js;
+      if (p.parentNode) p.parentNode.replaceChild(s, p);
+      return true;
+    }
+
+    var textNodes = [];
+    collectTextNodes(slotEl, textNodes);
+    for (var i = 0; i < textNodes.length; i++) {
+      var n = textNodes[i];
+      var v = n && n.nodeValue;
+      if (!v) continue;
+      if (!looksLikeAdvancedAdsInlineJs(v)) continue;
+      if (upgradeIfWrappedJsText(n)) continue;
+      var s = document.createElement('script');
+      s.setAttribute('data-pia-activated', '1');
+      s.text = String(v);
+      if (n.parentNode) n.parentNode.replaceChild(s, n);
+    }
+
+    // Phase 2b: if JS got split across multiple text/BR siblings, join and replace as one script.
+    try {
+      var more = [];
+      collectTextNodes(slotEl, more);
+      for (var mi = 0; mi < more.length; mi++) {
+        var tn = more[mi];
+        if (!tn || !tn.nodeValue) continue;
+        if (!isSliderInitJs(tn.nodeValue) && !looksLikeAdvancedAdsInlineJs(tn.nodeValue)) continue;
+        var p = tn.parentNode;
+        if (!p || p.nodeType !== 1) continue;
+        if ((p.tagName || '').toUpperCase() === 'SCRIPT') continue;
+
+        var js = '';
+        var run = [];
+        var cur = tn;
+        while (cur) {
+          if (cur.nodeType === 3) {
+            js += cur.nodeValue;
+            run.push(cur);
+          } else if (cur.nodeType === 1 && (cur.tagName || '').toUpperCase() === 'BR') {
+            js += '\n';
+            run.push(cur);
+          } else {
+            break;
+          }
+          cur = cur.nextSibling;
+          if (js.length > 50000) break;
+          if (js.indexOf('});});') !== -1 || js.indexOf('}); });') !== -1) break;
+        }
+
+        js = String(js || '').trim();
+        if (!js) continue;
+        if (!isSliderInitJs(js) && !looksLikeAdvancedAdsInlineJs(js)) continue;
+
+        var sc = document.createElement('script');
+        sc.setAttribute('data-pia-activated', '1');
+        sc.text = js;
+        if (run.length) {
+          var first = run[0];
+          if (first.parentNode) first.parentNode.insertBefore(sc, first);
+          for (var ri = 0; ri < run.length; ri++) {
+            var r = run[ri];
+            if (r && r.parentNode) r.parentNode.removeChild(r);
+          }
+        }
+      }
+    } catch (e2) { /* ignore */ }
+
+    // Scripts inserted via innerHTML don't reliably execute; re-insert them to run.
+    var scripts = slotEl.querySelectorAll('script');
+    for (var j = 0; j < scripts.length; j++) {
+      var old = scripts[j];
+      if (!old || old.getAttribute('data-pia-activated') === '1') continue;
+
+      var type = (old.getAttribute('type') || '').toLowerCase();
+      if (type && type !== 'text/javascript' && type !== 'application/javascript' && type !== 'module') continue;
+
+      var neu = document.createElement('script');
+      for (var k = 0; k < old.attributes.length; k++) {
+        var a = old.attributes[k];
+        if (a && a.name) neu.setAttribute(a.name, a.value);
+      }
+      neu.setAttribute('data-pia-activated', '1');
+
+      if (old.src) {
+        neu.src = old.src;
+      } else {
+        neu.text = old.text || old.textContent || '';
+      }
+
+      if (old.parentNode) old.parentNode.replaceChild(neu, old);
+    }
+  }
+
   function buildGroupPickList(targetCount){
     var out = [];
     var groups = (PIA_GROUP_IDS || []).filter(Boolean);
@@ -57,6 +439,7 @@
   function appendRendered(container, results, targetCount){
     var frag = document.createDocumentFragment();
     var added = 0;
+    var newSlots = [];
 
     for (var i=0; i<results.length; i++) {
       var res = results[i];
@@ -67,11 +450,19 @@
       slot.innerHTML = String(res.item);
 
       frag.appendChild(slot);
+      newSlots.push(slot);
       added++;
       if (added >= targetCount) break;
     }
 
-    if (frag.childNodes.length) container.appendChild(frag);
+    if (frag.childNodes.length) {
+      container.appendChild(frag);
+      // Must happen after insertion into the live DOM to guarantee execution.
+      for (var s = 0; s < newSlots.length; s++) {
+        activateAdScriptsIn(newSlots[s]);
+        postProcessSlot(newSlots[s]);
+      }
+    }
     return added;
   }
 

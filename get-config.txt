@@ -33,7 +33,11 @@ ssh texasmssite@34.174.186.154 -p 36770 'ls -la /www/texasmssite_545/public/wp-c
 # upload as .new
 scp -P 21268 \
   "./wp-config.staging.php" \
-  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php.new"
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php"
+
+  scp -P 36770 \
+  "./wp-config.live.php" \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-config.php"
 
 # on server: keep perms, backup old, swap in new
 ssh texasmssite@34.174.186.154 -p 21268 \
