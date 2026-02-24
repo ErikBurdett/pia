@@ -1,0 +1,1653 @@
+[
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-john-o-adefope",
+    "name": "John O. Adefope",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "CONSULTANT • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-anna-bender",
+    "name": "Anna Bender",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "IT ANALYST • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:llh@annabenderforsenate.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-virgil-john-bierschwale",
+    "name": "Virgil John Bierschwale",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "SOFTWARE DEVELOPER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:vbiersch@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-sara-canady",
+    "name": "Sara Canady",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "RETIRED JUDGE • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:campaign@saraforsenate.org"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-john-cornyn",
+    "name": "John Cornyn",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "U.S. SENATOR • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-wesley-hunt",
+    "name": "Wesley Hunt",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "US CONGRESSMAN • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-gulrez-gus-khan",
+    "name": "Gulrez \"Gus\" Khan",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "CO:OWNER:ASHHC • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:gkhan@gkhanforsenate.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-u-s-senator-ken-paxton",
+    "name": "Ken Paxton",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "U.S. Senator",
+    "summary": "ATTORNEY GENERAL • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:electkenpaxton@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-greg-abbott",
+    "name": "Greg Abbott",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "GOVERNOR OF TEXAS • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@gregabbott.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-r-f-bob-achgill",
+    "name": "R.F. \"Bob\" Achgill",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "LITERACY RESEARCH • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:bobachgill@hishandsreader.org"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-evelyn-brooks",
+    "name": "Evelyn Brooks",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "EDUCATOR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@brooksfortexasgovernor.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-pete-doc-chambers",
+    "name": "Pete \"Doc\" Chambers",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "PRESIDENT NON PROFIT • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-charles-andrew-crouch",
+    "name": "Charles Andrew Crouch",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "AUTHOR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:governorcrouch@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-arturo-espinosa",
+    "name": "Arturo Espinosa",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "FATHER: MY KINGDOM CHURCH • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:arturoespinosa1963@outlook.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-mark-v-goloby",
+    "name": "Mark V. Goloby",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "FOUNDER TC TECHNOLOGY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-kenneth-hyde",
+    "name": "Kenneth Hyde",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "CONTRACTOR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:kenneth.hyde@kennethhyde4txgov.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-stephen-samuelson",
+    "name": "Stephen Samuelson",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "VETERAN • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:resilienttexan@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-ronnie-tullos",
+    "name": "Ronnie Tullos",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "SHERIFF/PROJECT MANAGER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-governor-nathaniel-welch",
+    "name": "Nathaniel Welch",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Governor",
+    "summary": "SELF EMPLOYED • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-lieutenant-governor-perla-munoz-hopkins",
+    "name": "Perla Muñoz Hopkins",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Lieutenant Governor",
+    "summary": "EDUCATOR/AIR FORCE VETERAN • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@perlahopkins.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-lieutenant-governor-timothy-mabry",
+    "name": "Timothy Mabry",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Lieutenant Governor",
+    "summary": "BUSINESS CONSULTANT • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@timothy4tx.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-lieutenant-governor-dan-patrick",
+    "name": "Dan Patrick",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Lieutenant Governor",
+    "summary": "BUSINESS OWNER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-lieutenant-governor-esala-wueschner",
+    "name": "Esala Wueschner",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Lieutenant Governor",
+    "summary": "UNEMPLOYED • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:wsala@wueuniversal.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-attorney-general-joan-huffman",
+    "name": "Joan Huffman",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Attorney General",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:joan@joanhuffman.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-attorney-general-mayes-middleton",
+    "name": "Mayes Middleton",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Attorney General",
+    "summary": "ATTORNEY/BUSINESS OWNER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-attorney-general-aaron-reitz",
+    "name": "Aaron Reitz",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Attorney General",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:aaron@reitzfortexas.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-attorney-general-chip-roy",
+    "name": "Chip Roy",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Attorney General",
+    "summary": "ATTORNEY/CONGRESSMAN • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-comptroller-of-public-accounts-michael-berlanga",
+    "name": "Michael Berlanga",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Comptroller Of Public Accounts",
+    "summary": "CPA/LREB/SRPTC • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-comptroller-of-public-accounts-christi-craddick",
+    "name": "Christi Craddick",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Comptroller Of Public Accounts",
+    "summary": "RAILROAD COMMISSIONER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@christicraddick.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-comptroller-of-public-accounts-kelly-hancock",
+    "name": "Kelly Hancock",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Comptroller Of Public Accounts",
+    "summary": "BUSINESS OWNER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-comptroller-of-public-accounts-don-huffines",
+    "name": "Don Huffines",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Comptroller Of Public Accounts",
+    "summary": "BUSINESS OWNER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:don@donhuffines.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-commissioner-of-the-general-land-office-dawn-buckingham",
+    "name": "Dawn Buckingham",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Commissioner Of The General Land Office",
+    "summary": "PHYSICIAN • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:schedule@dawnbuckingham.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-commissioner-of-agriculture-sid-miller",
+    "name": "Sid Miller",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Commissioner Of Agriculture",
+    "summary": "FARMER/RANCHER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-commissioner-of-agriculture-nate-sheets",
+    "name": "Nate Sheets",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Commissioner Of Agriculture",
+    "summary": "ENTREPRENEUR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:nate@natesheets.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-railroad-commissioner-katherine-culbert",
+    "name": "Katherine Culbert",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Railroad Commissioner",
+    "summary": "ENGINEER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@katherine4texas.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-railroad-commissioner-hawk-dunlap",
+    "name": "Hawk Dunlap",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Railroad Commissioner",
+    "summary": "WELL CONTROL SPECIALIST • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-railroad-commissioner-bo-french",
+    "name": "Bo French",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Railroad Commissioner",
+    "summary": "INVESTOR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:bo@bofrench.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-railroad-commissioner-james-jim-matlock",
+    "name": "James (Jim) Matlock",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Railroad Commissioner",
+    "summary": "RETIRED • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@matlock4rcc.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-railroad-commissioner-jim-wright",
+    "name": "Jim Wright",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Railroad Commissioner",
+    "summary": "RAILROAD COMMISSIONER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-chief-justice-supreme-court-jimmy-blacklock",
+    "name": "Jimmy Blacklock",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Chief Justice, Supreme Court",
+    "summary": "JUDGE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-chief-justice-supreme-court-steve-smith",
+    "name": "Steve Smith",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Chief Justice, Supreme Court",
+    "summary": "ATTORNEY • Incumbent: No • Status: undefined",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-justice-supreme-court-place-2-unexpired-term-james-p-sullivan",
+    "name": "James P. Sullivan",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Justice, Supreme Court, Place 2 - Unexpired Term",
+    "summary": "JUSTICE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-justice-supreme-court-place-7-kyle-hawkins",
+    "name": "Kyle Hawkins",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Justice, Supreme Court, Place 7",
+    "summary": "ATTORNEY • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-justice-supreme-court-place-8-brett-busby",
+    "name": "Brett Busby",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Justice, Supreme Court, Place 8",
+    "summary": "JUDGE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:campaign@brettbusby.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-justice-supreme-court-place-8-david-rogers",
+    "name": "David Rogers",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Justice, Supreme Court, Place 8",
+    "summary": "ATTORNEY • Incumbent: No • Status: undefined",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:info@electmisterrogers.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-3-brent-coffee",
+    "name": "Brent Coffee",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 3",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:coffeeforjudge@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-3-lesli-fitzpatrick",
+    "name": "Lesli Fitzpatrick",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 3",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:leslifitz@sbcglobal.net"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-3-alison-fox",
+    "name": "Alison Fox",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 3",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-3-thomas-smith",
+    "name": "Thomas Smith",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 3",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-4-kevin-patrick-yeary",
+    "name": "Kevin Patrick Yeary",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 4",
+    "summary": "JUDGE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:judgeyeary@judgeyeary.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-9-jennifer-balido",
+    "name": "Jennifer Balido",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 9",
+    "summary": "STATE DISTRICT JUDGE • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:jbalido@aol.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-judge-court-of-criminal-appeals-place-9-john-messinger",
+    "name": "John Messinger",
+    "state": "Texas",
+    "county": "",
+    "district": "",
+    "office": "Judge, Court Of Criminal Appeals Place 9",
+    "summary": "APPELLATE PROSECUTOR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:messingerforjustice@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-judge-karen-hood",
+    "name": "Karen Hood",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "County Judge",
+    "summary": "RETIRED • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-judge-terry-johnson",
+    "name": "Terry Johnson",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "County Judge",
+    "summary": "COUNTY JUDGE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-judge-javier-marquez",
+    "name": "Javier Marquez",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "County Judge",
+    "summary": "OIL & GAS • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:JAY@JMFORJUDGE.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-judge-county-court-at-law-no-1-mark-henry-dettman",
+    "name": "Mark Henry Dettman",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Judge, County Court At Law No. 1",
+    "summary": "JUDGE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-judge-county-court-at-law-no-2-mike-rittenberry",
+    "name": "Mike Rittenberry",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Judge, County Court At Law No. 2",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:RITTENBERRY4CCL2@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-district-clerk-alex-lex-archuleta",
+    "name": "Alex \"Lex\" Archuleta",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "District Clerk",
+    "summary": "MIDLAND CO DISTRICT CLERK • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:lxzaundre_1@yahoo.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-clerk-alison-haley",
+    "name": "Alison Haley",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "County Clerk",
+    "summary": "COUNTY CLERK • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-treasurer-sara-gray",
+    "name": "Sara Gray",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "County Treasurer",
+    "summary": "COUNTY TREASURER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:saragray2022@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-chair-james-beauchamp",
+    "name": "James Beauchamp",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "County Chair",
+    "summary": "PRESIDENT • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:James.Beauchamp@yahoo.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-commissioner-precinct-2-brian-carney",
+    "name": "Brian Carney",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 2",
+    "office": "County Commissioner Precinct 2",
+    "summary": "ATTORNEY • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-commissioner-precinct-2-joe-watters",
+    "name": "Joe Watters",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 2",
+    "office": "County Commissioner Precinct 2",
+    "summary": "SALES TWG • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:JOEWATTERS49@YAHOO.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-commissioner-precinct-4-dianne-anderson",
+    "name": "Dianne Anderson",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 4",
+    "office": "County Commissioner Precinct 4",
+    "summary": "COUNTY COMMISSIONER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:DANDERSON@MCOUNTY.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-commissioner-precinct-4-h-lance-friday",
+    "name": "H Lance Friday",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 4",
+    "office": "County Commissioner Precinct 4",
+    "summary": "DEVELOPER/BUILDER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-county-commissioner-precinct-4-don-woody-woodward",
+    "name": "Don \"Woody\" Woodward",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 4",
+    "office": "County Commissioner Precinct 4",
+    "summary": "INSURANCE • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:WOODYFORPCT4@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-justice-of-the-peace-precinct-1-edelmira-ede-zamora-subia",
+    "name": "Edelmira \"Ede\" Zamora Subia",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 1",
+    "office": "Justice Of The Peace Precinct 1",
+    "summary": "JP, JUDGE PRECINT 1 • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:EDESUBIAFORJP@YAHOO.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-justice-of-the-peace-precinct-2-yadi-billeck",
+    "name": "Yadi Billeck",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 2",
+    "office": "Justice Of The Peace Precinct 2",
+    "summary": "JUSTICE OF THE PEACE PCT.2 • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-justice-of-the-peace-precinct-2-rhonda-eggleston",
+    "name": "Rhonda Eggleston",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 2",
+    "office": "Justice Of The Peace Precinct 2",
+    "summary": "LEGAL ASST. • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:egglesrm@gmail.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-justice-of-the-peace-precinct-3-susan-rayos",
+    "name": "Susan Rayos",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 3",
+    "office": "Justice Of The Peace Precinct 3",
+    "summary": "JUDGE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:SUSARAYOSJP3@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-justice-of-the-peace-precinct-4-john-wesley-barton",
+    "name": "John Wesley Barton",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "Precinct 4",
+    "office": "Justice Of The Peace Precinct 4",
+    "summary": "JUSTICE OF THE PEACE • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:BARTONFORJP4@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-103-rep-dara-crass",
+    "name": "Dara Crass",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_103_Rep",
+    "summary": "OPS MANAGER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:DARARICHARDSON86@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-107-rep-edel-molina",
+    "name": "Edel Molina",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_107_Rep",
+    "summary": "TEACHER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-201-rep-seth-pilar-ortega",
+    "name": "Seth Pilar Ortega",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_201_Rep",
+    "summary": "STUDENT • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:SETPILORT21@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-204-rep-denise-porter",
+    "name": "Denise Porter",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_204_Rep",
+    "summary": "SALES • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:denise@perkinspromotions.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-206-rep-carol-collier",
+    "name": "Carol Collier",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_206_Rep",
+    "summary": "RETIRED • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:CAROLMAMO@AOL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-207-rep-susan-wynn",
+    "name": "Susan Wynn",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_207_Rep",
+    "summary": "RETIRED • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:SUSANWYNN1966@GMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-210-rep-rhonda-lacy",
+    "name": "Rhonda Lacy",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_210_Rep",
+    "summary": "RETIRED TEACHER • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:rhondajlacy@yahoo.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-211-rep-john-gaston",
+    "name": "John Gaston",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_211_Rep",
+    "summary": "Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-302-rep-kelli-kincaid-burkes",
+    "name": "Kelli Kincaid Burkes",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_302_Rep",
+    "summary": "ACCOUNTANT • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": []
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-401-rep-j-p-pat-mcdaniel",
+    "name": "J.P. \"Pat\" Mcdaniel",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_401_Rep",
+    "summary": "EXEC. DIRECTOR • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:GUSDOG2010@REAGAN.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-403-rep-j-david-overton",
+    "name": "J David Overton",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_403_Rep",
+    "summary": "PETROLEUM GEOLOGIST • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:DAVO172@ATT.NET"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-404-rep-ellen-taylor",
+    "name": "Ellen Taylor",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_404_Rep",
+    "summary": "LEASE ANALYST • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:ELLENMTAYLOR@HOTMAIL.COM"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-405-rep-carie-mcneil",
+    "name": "Carie Mcneil",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_405_Rep",
+    "summary": "REALTOR • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:carie@cariesellstexas.com"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-409-rep-keith-stretcher",
+    "name": "Keith Stretcher",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_409_Rep",
+    "summary": "RETIRED • Incumbent: Yes • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:KSASTRETCH3@SUDDENLINK.NET"
+      }
+    ]
+  },
+  {
+    "external_id": "tx-2026-2026-republican-primary-midland-precinct-chair-for-pchr-411-rep-cynthia-e-beth-warren",
+    "name": "Cynthia E. (Beth) Warren",
+    "state": "Texas",
+    "county": "Midland",
+    "district": "",
+    "office": "Precinct Chair For Pchr_411_Rep",
+    "summary": "DESIGNER • Incumbent: No • Status: In Primary",
+    "bio": "",
+    "website": "",
+    "video_url": "",
+    "portrait_url": "",
+    "featured": false,
+    "approved": false,
+    "buttons": [
+      {
+        "label": "Email",
+        "url": "mailto:BETHWARREN7@GMAIL.COM"
+      }
+    ]
+  }
+]

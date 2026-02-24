@@ -255,3 +255,12 @@ The importer accepts either a **flat list** or a **grouped object** (it will aut
 ## Generating JSON locally
 
 See `candidates-data/README.md` for Python scripts that fetch and normalize FEC and Texas SOS data into the plugin’s JSON format.
+
+
+scp -P 21268 \
+  "/home/telephone/pia-wp/pia/pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu/data/civix_2026_gop_primary_statewide.json" \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-content/mu-plugins/pia-candidates-mu/data/"
+
+scp -P 21268 \
+  /home/telephone/pia-wp/pia/pia-staging-wp/wp-content/mu-plugins/pia-candidates-mu/data/civix_2026_gop_primary_*_plus_statewide.json \
+  texasmssite@34.174.186.154:"/www/texasmssite_545/public/wp-content/mu-plugins/pia-candidates-mu/data/"
