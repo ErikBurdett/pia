@@ -32,6 +32,7 @@ final class PIA_Candidates_MU {
         add_action('admin_menu', [$this, 'register_settings_page']);
         add_action('admin_init', [$this, 'register_settings']);
         add_action('admin_post_pia_candidates_import', [$this, 'handle_import']);
+        add_action('admin_post_pia_candidates_purge', [$this, 'handle_purge']);
         add_action('admin_notices', [$this, 'render_admin_notice']);
 
         add_shortcode('pia_candidate_directory', [$this, 'render_directory_shortcode']);
@@ -682,8 +683,69 @@ JS;
                 <input type="hidden" name="action" value="pia_candidates_import" />
                 <?php submit_button('Run Import', 'primary', 'submit', false); ?>
             </form>
+            <hr />
+            <h2>Danger Zone</h2>
+            <p><strong>Delete all candidates</strong> on this site. This cannot be undone.</p>
+            <form method="post" action="<?php echo esc_url($import_url); ?>" onsubmit="return confirm('Delete ALL candidates on this site? This cannot be undone.');">
+                <?php wp_nonce_field('pia_candidates_purge', 'pia_candidates_purge_nonce'); ?>
+                <input type="hidden" name="action" value="pia_candidates_purge" />
+                <?php submit_button('Delete All Candidates', 'delete', 'submit', false); ?>
+            </form>
         </div>
         <?php
+    }
+
+    public function handle_purge(): void {
+        if (!current_user_can('manage_options')) {
+            $this->redirect_with_notice('Insufficient permissions.');
+        }
+
+        if (
+            !isset($_POST['pia_candidates_purge_nonce'])
+            || !wp_verify_nonce((string) $_POST['pia_candidates_purge_nonce'], 'pia_candidates_purge')
+        ) {
+            $this->redirect_with_notice('Security check failed.');
+        }
+
+        $deleted_candidates = 0;
+        $deleted_categories = 0;
+
+        // Delete candidates in small batches to avoid timeouts/memory spikes.
+        while (true) {
+            $ids = get_posts([
+                'post_type' => self::POST_TYPE,
+                'post_status' => 'any',
+                'posts_per_page' => 200,
+                'fields' => 'ids',
+                'no_found_rows' => true,
+            ]);
+            if (empty($ids)) {
+                break;
+            }
+            foreach ($ids as $id) {
+                $result = wp_delete_post((int) $id, true);
+                if ($result) {
+                    $deleted_candidates++;
+                }
+            }
+        }
+
+        // Delete all candidate categories (taxonomy terms) for a clean slate.
+        $term_ids = get_terms([
+            'taxonomy' => self::TAXONOMY,
+            'hide_empty' => false,
+            'fields' => 'ids',
+        ]);
+        if (!is_wp_error($term_ids) && !empty($term_ids)) {
+            foreach ($term_ids as $term_id) {
+                $deleted = wp_delete_term((int) $term_id, self::TAXONOMY);
+                if (!is_wp_error($deleted) && $deleted) {
+                    $deleted_categories++;
+                }
+            }
+        }
+
+        $this->redirect_with_notice('Deleted ' . $deleted_candidates . ' candidates and ' . $deleted_categories . ' categories.');
     }
 
     public function render_admin_notice(): void {
